@@ -1,0 +1,13 @@
+index
+eventos_fututros
+evento_sin
+evento_user
+evento_admin
+eventos_pasados
+info_evento_sin
+info_evento_user
+info_evento_admin
+access
+signup_admin
+acount
+estadisticas
