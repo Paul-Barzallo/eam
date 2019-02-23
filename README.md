@@ -22,6 +22,7 @@ Ninguna
 * Java 8
 * Spring 5.1.
 * Apache Tomcast 9
+* MySQL 8
 
 ## Colaboradores
 
