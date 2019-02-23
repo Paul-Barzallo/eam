@@ -1,6 +1,6 @@
 # Eventos y Actividades en Madrid
 
-Pagina web en la que puedes mirar eventos que se realizar√°n en tu barrio entre los usuarios de la web
+Pagina web en la que puedes mirar eventos que se realizar·n en tu barrio entre los usuarios de la web
 
 ## Prerrequisitos
 
@@ -12,17 +12,13 @@ Ninguna
 
 ## Creado con
 
-* HTML
+* API Gmail
 * JavaScript
 * CSS
-* Bootstrap 4
+* Bootstrap
 * JQuery
 * Moment.js
 * Google Charts
-* Java 8
-* Spring 5.1.
-* Apache Tomcast 9
-* MySQL 8
 
 ## Colaboradores
 
