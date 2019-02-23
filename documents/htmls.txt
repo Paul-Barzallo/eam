@@ -1,13 +1,12 @@
 index
-eventos_fututros
-evento_sin
-evento_user
-evento_admin
+proximos_eventos
+  evento_sin
+  evento_user
+  evento_admin
 eventos_pasados
-info_evento_sin
-info_evento_user
-info_evento_admin
-access
-signup_admin
-acount
+  info_evento_sin
+  info_evento_user
+iniciar_sesion
+registro_admin
+cuenta
 estadisticas
