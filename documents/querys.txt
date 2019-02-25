@@ -1,0 +1,50 @@
+CREATE TABLE Usuarios ( 
+  id smallint unsigned not null auto_increment
+  name varchar(20) not null
+constraint pk_example primary key (id)
+);
+INSERT INTO example ( id, name ) VALUES ( null, 'Sample data' );
+
+
+
+
+CREATE TABLE Usuarios ( 
+	id_usuario VARCHAR(20) PRIMARY KEY,
+	password VARCHAR(20) NOT NULL,
+	email VARCHAR(80) NOT NULL UNIQUE,
+	rango_edad INT NOT NULL,
+	barrio VARCHAR(20) NOT NULL,
+	es_admin BOOLEAN NOT NULL,
+	activo BOOLEAN NOT NULL,
+);
+
+CREATE TABLE Admin (
+	id_admin VARHCAT(9) PRIMARY KEY,
+	tlf VARCHAR(9) NOT NULL,
+	id_usuario VARCHAR(20),
+	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+);
+
+CREATE TABLE Eventos (
+	id_eventos INT AUTO_INCREMENT PRIMARY KEY
+	titulo 
+);
+
+CREATE TABLE Inscritos (
+	id_usuario VARCHAR(20),
+	id_evento VARCHAR(20),
+	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+	FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
+);
+
+CREATE TABLE Hobbies (
+
+);
+
+CREATE TABLE HobbiesUsuarios (
+
+);
+
+CREATE TABLE HobbiesEventos (
+
+);
