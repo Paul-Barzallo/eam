@@ -1,0 +1,103 @@
+CREATE database eam;
+USE eam;
+
+CREATE TABLE Usuarios ( 
+	id_usuario VARCHAR(20) PRIMARY KEY,
+	password VARCHAR(32) NOT NULL,
+	email VARCHAR(80) NOT NULL UNIQUE,
+	rango_edad INT NOT NULL,
+	barrio VARCHAR(20) NOT NULL,
+	es_admin BOOLEAN NOT NULL,
+	activo BOOLEAN NOT NULL,
+);
+CREATE TABLE Admins (
+	id_admin VARHCAT(9) PRIMARY KEY,
+	tlf VARCHAR(9) NOT NULL,
+	id_usuario VARCHAR(20),
+	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+);
+CREATE TABLE Eventos (
+	id_eventos INT AUTO_INCREMENT PRIMARY KEY,
+	titulo VARCHAR(40) NOT NULL,
+	descripcion VARCHAR NOT NULL,
+	fecha DATETIME NOT NULL,
+	barrio VARCHAR(20) NOT NULL,
+	direccion VARCHAR(60) NOT NULL,
+	ruta_img VARCHAR(200) NOT NULL,
+	cancelado BOOLEAN NOT NULL,
+	aprobado BOOLEAN NOT NULL,
+	id_creador VARCHAR(20),
+	FOREIGN KEY (id_creador) REFERENCES Usuarios(id_usuario)
+);
+CREATE TABLE Inscritos (
+	id_usuario VARCHAR(20),
+	id_evento VARCHAR(20),
+	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+	FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
+);
+CREATE TABLE Hobbies (
+	id_hobbie INT AUTO_INCREMENT PRIMARY KEY,
+	descripcion VARCHAR(60) NOT NULL
+);
+CREATE TABLE HobbiesUsuarios (
+	id_usuario VARCHAR(20),
+	id_hobbie INT,
+	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+	FOREIGN KEY (id_hobbie) REFERENCES Hobbies(id_hobbie)
+);
+CREATE TABLE HobbiesEventos (
+	id_evento VARCHAR(20),
+	id_hobbie INT,
+	FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
+	FOREIGN KEY (id_hobbie) REFERENCES Hobbies(id_hobbie)
+);
+
+INSERT INTO Hobbies (descripcion)
+VALUES
+	('futbol'),
+	('baloncesto'),
+	('senderismo'),
+	('juegos de mesa'),
+	('cine'),
+	('cartas'),
+	('museos'),
+	('gastronomia'),
+	('manualidades');
+INSERT INTO Usuarios
+VALUES
+	('paulb', MD5('an28dres'), 'barzallopa@gmail.com', 1, 'Tetuan', true, true),
+	('alvaro', MD5('user2'), 'avillanovaf@gmail.com', 2, 'Latina', true, true),
+	('borja', MD5('user3'), 'borja@gmail.com', 2, 'Arganzuela', true, true);
+INSERT INTO HobbiesUsuarios
+VALUES
+	('paulb', 3),
+	('paulb', 4),
+	('paulb', 5),
+	('paulb', 6),
+	('paulb', 8),
+	('alvaro', 1),
+	('alvaro', 2),
+	('alvaro', 4),
+	('borja', 5),
+	('borja', 7),
+	('borja', 8);
+INSERT INTO Admins VALUES ('51511038P', '632401379', 'paulb');
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, cancelado, id_creador);
+VALUES ("Primer evento de prueba",
+		"este es el primer evento de la pagina web, es solo una prueba
+		el evento no tiene contenido",
+		'2019-03-04 11:30:00',
+		'Tetuan',
+		'c/ falsa, 11 3/4',
+		'img/before/evento1',
+		false,
+		true,
+		'paulb');
+INSERT INTO HobbiesEventos
+VALUES
+	(1, 3),
+	(1, 5);
+INSERT INTO Inscritos VALUES ('paulb', 1);
+INSERT INTO Inscritos VALUES ('alvaro', 1);
+INSERT INTO Inscritos VALUES ('borja', 1);
+		
