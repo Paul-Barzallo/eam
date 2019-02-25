@@ -73,9 +73,32 @@ function makeChecks(div, list, name_check, class_div_check){
 }
 
 //add boton -> true para añadir un boton que deja eliminar el alert
-function makeAlert(color, text, add_btn) {
+function makeAlert(color, txt, add_btn) {
 	let alert = $('<div class="alert alert-dismissible fade show w-auto mt-3 mb-0">');
-	alert.addClass(color).append(text);
+	alert.addClass(color).append(txt);
 	if (add_btn) alert.prepend('<button type="button" class="close" data-dismiss="alert">&times;</button>')
 	return alert;
+}
+
+
+/*<li data-target="#imgs" data-slide-to="0" class="active"></li>
+
+<div class="carousel-item active">
+	<img src="la.jpg" alt="Los Angeles" width="1100" height="500">
+</div>*/
+
+
+function makeCarrousel(dir_img) {
+	var ul = $('#indicador');
+	var div = $('#imagenes');
+	var seguir = true;
+	var count = 0;
+
+	while (seguir) {
+		try {
+			let li = $('<li data-target="#imgs">');
+		} catch(err) {
+			
+		}
+	}
 }
