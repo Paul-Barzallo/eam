@@ -32,6 +32,9 @@ function makeNav(active){
 		ul1.append(li);
 	});
 }
+function makeHome() {
+	makeCarrousel("img/home/", 3);
+}
 function makeAccess(){
 	var ages = 		["---Rango de edad---","< 18","18 - 25","26 - 30","31 - 35","36 - 40", "> 40"];
 	var districs = 	["---Barrio---","Arganzuela","Barajas","Canillejas","Carabanchel","Centro","Chamartin","Chamberi","Ciudad Lineal","El pardo-Fuencarral","Hortaleza","Latina","Moncloa","Moratalaz","Puente de Vallecas","Retiro","Salamanca","Tetuan","Usera","Vicalvaro","Villa de Vallecas","Villaverde"];
@@ -80,25 +83,24 @@ function makeAlert(color, txt, add_btn) {
 	return alert;
 }
 
-
-/*<li data-target="#imgs" data-slide-to="0" class="active"></li>
-
-<div class="carousel-item active">
-	<img src="la.jpg" alt="Los Angeles" width="1100" height="500">
-</div>*/
-
-
-function makeCarrousel(dir_img) {
+function makeCarrousel(dir_img, num_img) {
 	var ul = $('#indicador');
 	var div = $('#imagenes');
 	var seguir = true;
 	var count = 0;
 
-	while (seguir) {
-		try {
-			let li = $('<li data-target="#imgs">');
-		} catch(err) {
-			
+	for (var i=0; i<num_img; i++){
+		let li = $('<li data-target="#imgs">');
+		let div_img = $('<div class="carousel-item">');
+		let img = $('<img class="rounded img-carrousel">');
+		li.attr("data-slide-to", i);
+		img.attr({src: dir_img+i+".jpg", alt:"imagen del evento "+(i+1)});
+		if (i==0){
+			li.addClass('active');
+			div_img.addClass('active');
 		}
+		div_img.append(img);
+		ul.append(li);
+		div.append(div_img);
 	}
 }

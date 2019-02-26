@@ -15,7 +15,7 @@
 	<script type="text/javascript">
 		function make() {
 			makeNav(-2);
-			makeCarousel():
+			makeHome();
 		}
 		$(document).ready(make);
 	</script>
@@ -35,26 +35,13 @@
 	</nav>
 
 	<section class="container">
-		<article class="container mt-5 row">
-			<div id="imgs" class="carousel slide" data-ride="carousel">
+		<article class="container mt-3 mx-0 row d-flex justify-content-center">
+			<div class="col-md"></div>
+			<div id="imgs" class="carousel slide col-lg-8 col-md-10 col-12" data-ride="carousel">
 				<!-- indicador -->
-				<ul class="carousel-indicators" id="indicador">
-					<li data-target="#imgs" data-slide-to="0" class="active"></li>
-					<li data-target="#imgs" data-slide-to="1"></li>
-					<li data-target="#imgs" data-slide-to="2"></li>
-				</ul>
+				<ul class="carousel-indicators" id="indicador"></ul>
 				<!-- imagenes -->
-				<div class="carousel-inner" id="imagenes">
-					<div class="carousel-item active">
-						<img src="la.jpg" alt="Los Angeles" width="1100" height="500">
-					</div>
-					<div class="carousel-item">
-						<img src="chicago.jpg" alt="Chicago" width="1100" height="500">
-					</div>
-					<div class="carousel-item">
-						<img src="ny.jpg" alt="New York" width="1100" height="500">
-					</div>
-				</div>
+				<div class="carousel-inner" id="imagenes"></div>
 				<!-- botones IZQ y DER -->
 				<a class="carousel-control-prev" href="#imgs" data-slide="prev">
 					<span class="carousel-control-prev-icon"></span>
@@ -63,6 +50,15 @@
 					<span class="carousel-control-next-icon"></span>
 				</a>
 			</div>
+			<div class="col-md"></div>
+		</article>
+		<article class="container mt-3 text-center">
+			<p>En esta pagina se publican eventos en diferentes barrios de madrid indicando el tipo de hobbies que están implicado para poder apuntarte a uno de los eventos debes estar registrado y haber iniciado sesión, si no estás registrado a que esperas, ¡unete a nuestra comunidad!</p>
+			<p class="mb-0"><b>Si creas una cuenta tendras muchas ventasjas:</b></p>
+			<p class="mb-0">-Te mostraremos eventos segun tus intereses</p>
+			<p class="mb-0">-Podras ver quienes se han apuntado a los eventos</p>
+			<p class="mb-0">-Tendras un registro de los eventos</p>
+			<p>-Puedes comentar los eventos a los que asististe</p>
 		</article>
 	</section>
 	
