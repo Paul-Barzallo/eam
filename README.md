@@ -2,6 +2,8 @@
 
 Pagina web en la que puedes mirar eventos que se realizarán en tu barrio entre los usuarios de la web
 
+![Screenshot](documents/home.png)
+
 ## Prerrequisitos
 
 Ninguno
