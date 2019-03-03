@@ -8,22 +8,23 @@ CREATE TABLE Usuarios (
 	rango_edad INT NOT NULL,
 	barrio VARCHAR(20) NOT NULL,
 	es_admin BOOLEAN NOT NULL,
-	activo BOOLEAN NOT NULL,
+	activo BOOLEAN NOT NULL
 );
 CREATE TABLE Admins (
-	id_admin VARHCAT(9) PRIMARY KEY,
+	id_admin VARCHAR(9) PRIMARY KEY,
 	tlf VARCHAR(9) NOT NULL,
 	id_usuario VARCHAR(20),
 	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
 );
 CREATE TABLE Eventos (
-	id_eventos INT AUTO_INCREMENT PRIMARY KEY,
+	id_evento INT AUTO_INCREMENT PRIMARY KEY,
 	titulo VARCHAR(40) NOT NULL,
-	descripcion VARCHAR NOT NULL,
+	descripcion VARCHAR(1000) NOT NULL,
 	fecha DATETIME NOT NULL,
 	barrio VARCHAR(20) NOT NULL,
 	direccion VARCHAR(60) NOT NULL,
 	ruta_img VARCHAR(200) NOT NULL,
+	num_img INT NOT NULL,
 	cancelado BOOLEAN NOT NULL,
 	aprobado BOOLEAN NOT NULL,
 	id_creador VARCHAR(20),
@@ -31,7 +32,7 @@ CREATE TABLE Eventos (
 );
 CREATE TABLE Inscritos (
 	id_usuario VARCHAR(20),
-	id_evento VARCHAR(20),
+	id_evento INT,
 	FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
 	FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
 );
@@ -46,7 +47,7 @@ CREATE TABLE HobbiesUsuarios (
 	FOREIGN KEY (id_hobbie) REFERENCES Hobbies(id_hobbie)
 );
 CREATE TABLE HobbiesEventos (
-	id_evento VARCHAR(20),
+	id_evento INT,
 	id_hobbie INT,
 	FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
 	FOREIGN KEY (id_hobbie) REFERENCES Hobbies(id_hobbie)
@@ -82,7 +83,7 @@ VALUES
 	('borja', 7),
 	('borja', 8);
 INSERT INTO Admins VALUES ('51511038P', '632401379', 'paulb');
-INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, cancelado, id_creador);
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, cancelado, aprobado, id_creador)
 VALUES ("Primer evento de prueba",
 		"este es el primer evento de la pagina web, es solo una prueba
 		el evento no tiene contenido",
