@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css/estilo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<script src="js/maker.js"></script>
+
+	<script type="text/javascript">
+		function make() {
+			makeNav(-3);
+			makeHome ();
+		}
+		$(document).ready(make);
+	</script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+		<a class="navbar-brand" href="./">
+			<img src="img/logo.png" alt="logo" width="40">EAM
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#despegable">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="despegable">
+			<ul class="navbar-nav" id="nav_ul_enlaces"></ul>
+			<ul class="navbar-nav ml-auto" id="nav_ul_enlace_log"></ul>
+		</div>
+	</nav>
+
+	<section class="container">
+		<article class="container mt-4 mx-0 d-flex justify-content-center">
+			<div id="imgs" class="carousel slide col-lg-8 col-md-10 col-12" data-ride="carousel">
+				<!-- indicador -->
+				<ul class="carousel-indicators" id="indicador"></ul>
+				<!-- imagenes -->
+				<div class="carousel-inner" id="imagenes"></div>
+				<!-- botones IZQ y DER -->
+				<a class="carousel-control-prev" href="#imgs" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#imgs" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+			</div>
+		</article>
+		<article class="container mt-3 mx-0 text-justify d-flex justify-content-center">
+			<div class="col-lg-10 col-12">
+				<p>En esta pagina se publican eventos en diferentes barrios de madrid indicando el tipo de hobbies que están implicado para poder apuntarte a uno de los eventos debes estar registrado y haber iniciado sesión, si no estás registrado a que esperas, ¡unete a nuestra comunidad!</p>
+				<div class="container">
+					<p class="mb-0"><b>Si creas una cuenta tendras muchas ventasjas:</b></p>
+					<p class="mb-0"> -Te mostraremos eventos segun tus intereses</p>
+					<p class="mb-0"> -Podras ver quienes se han apuntado a los eventos</p>
+					<p class="mb-0"> -Tendras un registro de los eventos</p>
+					<p>-Puedes comentar los eventos a los que asististe</p>
+				</div>
+			</div>
+		</article>
+	</section>
+	
+	<footer class="container-fluid bg-dark text-center pt-3">
+		<p class="mb-2"><ins><b>Creado por:</b></ins></p>
+		<div class="row d-flex justify-content-center">
+			<p class="col-xl-2 col-lg-3 col-sm-4">Paul Barzallo</p>
+			<p class="col-xl-2 col-lg-3 col-sm-4">Alvaro Villanova</p>
+			<p class="col-xl-2 col-lg-3 col-sm-4">Borja Gomez-Rey</p>
+		</div>
+	</footer>
+</body>
+</html>

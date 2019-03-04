@@ -101,4 +101,11 @@ VALUES
 INSERT INTO Inscritos VALUES ('paulb', 1);
 INSERT INTO Inscritos VALUES ('alvaro', 1);
 INSERT INTO Inscritos VALUES ('borja', 1);
-		
+
+INSERT INTO Usuarios
+VALUES ('pepe', MD5('user'), 'user@gmail.com', 1, 'Tetuan', false, true);
+INSERT INTO HobbiesUsuarios
+VALUES
+	('pepe', 3),
+	('pepe', 4),
+	('pepe', 5);
