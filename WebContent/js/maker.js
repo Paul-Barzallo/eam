@@ -38,6 +38,7 @@ function makeNav(active){
 }
 function makeHome() {
 	makeCarrousel("img/home/", 3);
+	$.get("remember");
 }
 function makeAccess(){
 	var ages = 		["---Rango de edad---","< 18","18 - 25","26 - 30","31 - 35","36 - 40", "> 40"];

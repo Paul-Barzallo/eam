@@ -20,10 +20,10 @@ function submitLogin(){
 	var div = $("#error_login");
 	var user = $("#user_login").val();
 	var pwd = $("#pwd_login").val();
-    var ruta = "login"+"?"+"user_login="+user+"&"+"pwd_login="+pwd;
+	var switch = $('#switch_login').prop('checked');
     div.empty();
 
-	$.post("login", {user_login: user, pwd_login: pwd})
+	$.post("login", {user_login: user, pwd_login: pwd, remember: switch})
 	.done(function(respuesta, status){
 		if (respuesta == 1) $(location).attr('href',"./");
     	else div.append(makeAlert("alert-danger","Usuario o contraseña incorrecta", true));

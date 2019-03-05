@@ -83,7 +83,7 @@ VALUES
 	('borja', 7),
 	('borja', 8);
 INSERT INTO Admins VALUES ('51511038P', '632401379', 'paulb');
-INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, cancelado, aprobado, id_creador)
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
 VALUES ("Primer evento de prueba",
 		"este es el primer evento de la pagina web, es solo una prueba
 		el evento no tiene contenido",
@@ -91,6 +91,7 @@ VALUES ("Primer evento de prueba",
 		'Tetuan',
 		'c/ falsa, 11 3/4',
 		'img/before/evento1',
+		3,
 		false,
 		true,
 		'paulb');
