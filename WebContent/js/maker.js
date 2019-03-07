@@ -116,7 +116,6 @@ function makeChecks(div, list, name_check, class_div_check){
 		div.append(div_check);
 	});
 }
-
 //add boton -> true para añadir un boton que deja eliminar el alert
 function makeAlert(color, text, add_btn) {
 	let alert = $('<div class="alert alert-dismissible fade show w-auto mt-3 mb-0">');
@@ -124,7 +123,6 @@ function makeAlert(color, text, add_btn) {
 	if (add_btn) alert.prepend('<button type="button" class="close" data-dismiss="alert">&times;</button>')
 	return alert;
 }
-
 function makeCarrousel(dir_img, num_img) {
 	var ul = $('#indicador');
 	var div = $('#imagenes');
@@ -145,4 +143,87 @@ function makeCarrousel(dir_img, num_img) {
 		ul.append(li);
 		div.append(div_img);
 	}
+}
+function makeFilter(){
+	var districs = 	["---Barrio---","Arganzuela","Barajas","Canillejas","Carabanchel","Centro","Chamartin","Chamberi","Ciudad Lineal","El pardo-Fuencarral","Hortaleza","Latina","Moncloa","Moratalaz","Puente de Vallecas","Retiro","Salamanca","Tetuan","Usera","Vicalvaro","Villa de Vallecas","Villaverde"];
+	var hobbies = 	["futbol", "baloncesto", "senderismo", "juegos de mesa", "cine", "cartas", "museos", "gastronomía", "manualidades"];
+	var name_hobbies = "hobbies_signup";
+	var select_distric = $("#distric_signup");
+	var div_checks = $("#hobbies_signup");
+
+	$("#collapse-filtros").click(collapseFiltro)
+	$("#collapse-historial").click(collapseHistorial)
+
+	makeSelect(select_distric, districs, true);
+	makeChecks(div_checks, hobbies, name_hobbies, "");
+	for (var i=0; i<15; i++){
+		makeEvento();
+	}
+}
+function hiddenLoad(){
+	$("#load").addClass("d-none");
+	$("#main").removeClass("d-none");
+}
+function collapseFiltro(){
+	filtros = $("#filtros");
+	if (filtros.hasClass("d-none"))
+		filtros.removeClass("d-none d-md-block");
+	else 
+		filtros.addClass("d-none d-md-block");
+}
+function collapseHistorial(){
+	historial = $("#historial");
+	if (historial.hasClass("d-none"))
+		historial.removeClass("d-none d-md-block");
+	else 
+		historial.addClass("d-none d-md-block");
+}
+function makeEvento(){
+	var hobbies = ["hobbie 1", "hobbie 2"]
+	var src_img = "img/evento1/1.jpg";
+	var titulo = "titulo";
+	var fecha = "fecha";
+	var barrio = "barrio";
+	var descripcion = ""
+
+
+	/*=== VALORES DE PRUEBA ===*/
+	// img aleatoria
+	var num_img = Math.floor(Math.random()*(2+1))
+	src_img = "img/evento1/"+num_img+".jpg";
+	// lorem ipsum
+	var num_palabras = Math.floor(Math.random()*(300-20))+20
+	var lipsum = new LoremIpsum();
+	var texto = lipsum.generate(num_palabras);
+	descripcion = texto;
+	// num aleatorio entre 1 y 9 de hobbies
+	var list_hobbies = [];
+	var num_hobbies = Math.floor(Math.random()*(9-1))+1
+	for (var i=0; i<num_hobbies; i++){
+		list_hobbies.push("hobbie "+(i+1));
+	}
+	hobbies = list_hobbies;
+	/* =======================*/
+
+
+	var article = $('<article class="evento media border bg-light p-3 my-2">');
+	var div1 = $('<div class="mr-3 mt-2">');
+	var img = $('<img alt="Imagen de un evento" class="img-evento img-fluid img-thumbnail mb-2">');
+	var div_hobbies = $('<div class="row hobbies-evento">');
+	var div2 = $('<div class="media-body text-justify">');
+	var h_titulo = $('<h4>').text(titulo);
+	var p_fecha = $('<p><small><i>'+fecha+'</i></small></p>');
+	var p_barrio = $('<p class="mb-2"><small><b>'+barrio+'</b></small></p>');
+	var p_descripcion = $('<p>').text(descripcion);
+
+	$.each(hobbies, function(i, value){
+		let hobbie = $('<div class="col-xl-6 col-12"><p class="text-info"><small>#'+value+'</small></p></div>');
+		div_hobbies.append(hobbie);
+	});
+
+	img.attr("src", src_img);
+	div1.append(img, div_hobbies);
+	div2.append(h_titulo, p_fecha, p_barrio, p_descripcion);
+	article.append(div1, div2);
+	$("#eventos").append(article);
 }
