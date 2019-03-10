@@ -18,7 +18,7 @@ public class Logout extends HttpServlet {
         super();
     }
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesion = request.getSession(false);
 		response.setContentType("text/html");
         if(sesion!=null){
@@ -33,5 +33,4 @@ public class Logout extends HttpServlet {
         }
         response.sendRedirect("./");
 	}
-
 }

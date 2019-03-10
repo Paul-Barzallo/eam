@@ -1,8 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+pageEncoding="UTF-8" %>
+<%@ page import="
+	java.util.List,
+	java.util.LinkedList,
+	java.util.Date,java.text.DateFormat,
+	javax.persistence.*,
+	db.DB,javax.servlet.ServletContext,
+	models.*"
+%>
+<jsp:useBean id='db' class='db.DB' scope='application' />
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Eventos pasados</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -10,18 +21,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	<script src="js/lorem-ipsum.js"></script>
 	<script src="js/maker.js"></script>
 
 	<script type="text/javascript">
 		function make() {
 			makeNav(1);
 			makeFilter();
-			setTimeout("hiddenLoad();", 500)
-		}
-		function hiddenLoad(){
-			$("#load").addClass("d-none");
-			$("#main").removeClass("d-none");
+			setTimeout("hiddenLoad();", 1000)
 		}
 		$(document).ready(make);
 	</script>
@@ -51,7 +57,7 @@
 					<h5>Hobbies:</h5>
 					<div class="m-0 pl-2 pb-2" id="hobbies_signup"></div>
 
-					<button class="btn btn-primary px-5" id="btn_signup" type="button">Buscar</button>
+					<button class="btn btn-primary px-5" id="btn_sign up" type="button">Buscar</button>
 				</form>
 			</aside>
 			<aside class="container col-md-2 col-12 order-md-3 p-0 w-100">
@@ -80,16 +86,16 @@
 							<div id="demo2" class="collapse">
 								<ul class="nav flex-column ml-2">
 									<li class="nav-item">
-										<button class="nav-link btn btn-link p-0 ml-2">Diciembre</button>
+										<button class="nav-link btn btn-link py-0">Diciembre</button>
 									</li>
 									<li class="nav-item">
-										<button class="nav-link btn btn-link p-0 ml-2">Noviembre</button>
+										<button class="nav-link btn btn-link py-0">Noviembre</button>
 									</li>
 									<li class="nav-item">
-										<button class="nav-link btn btn-link p-0 ml-2">Octubre</button>
+										<button class="nav-link btn btn-link py-0">Octubre</button>
 									</li>
 									<li class="nav-item">
-										<button class="nav-link btn btn-link p-0 ml-2">Septiembre</button>
+										<button class="nav-link btn btn-link py-0">Septiembre</button>
 									</li>
 								</ul>
 							</div>
@@ -97,7 +103,31 @@
 					</ul>
 				</div>
 			</aside>
-			<section id="eventos" class="container col-xl-8 col-md-7 col-12 px-3 mt-2"></section>
+			<section id="eventos" class="container col-xl-8 col-md-7 col-12 px-3 mt-2"> 
+			<%
+				DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
+				TypedQuery<Evento> query = db.getEM().createQuery("SELECT e FROM Evento e", Evento.class);
+				for (Evento e : query.getResultList()) { %>
+					<article class="evento media border bg-light p-3 my-2">
+						<div class="mr-3 mt-2">
+							<img alt="Imagen de un evento" class="img-evento img-fluid img-thumbnail mb-2" src="<%= e.getRutaImg() %>/0.jpg">
+							<div class="row hobbies-evento">
+								<%	for (Hobby hobby: e.getHobbies()){ %>
+										<div class="col-xl-6 col-12">
+											<p class="text-info"><small>#<%= hobby.getDescripcion() %></small></p>
+										</div>
+								<%	} %>
+							</div>
+						</div>
+						<div class="media-body text-justify">
+							<h4><%= e.getTitulo() %></h4>
+							<p><small><i><%= df.format(e.getFecha()) %></i></small></p>
+							<p class="mb-2"><small><b><%= e.getBarrio() %></b></small></p>
+							<p><%= e.getDescripcion() %></p>
+						</div>
+					</article>
+			<%	} %>
+			</section>
 		</div>
 		
 		<footer class="container-fluid bg-dark text-center py-3">

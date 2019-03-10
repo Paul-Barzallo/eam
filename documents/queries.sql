@@ -1,4 +1,11 @@
-DROP TABLE IF EXISTS eam;
+SET GLOBAL time_zone = '+1:00';
+
+DROP DATABASE IF EXISTS eam;
+
+DROP USER IF EXISTS 'adminEAM'@'localhost';
+CREATE USER 'adminEAM'@'localhost' identified by 'conecta';
+GRANT ALL PRIVILEGES ON eam.* TO adminEAM@localhost;
+FLUSH PRIVILEGES;
 
 CREATE database eam;
 USE eam;
@@ -30,7 +37,7 @@ CREATE TABLE Eventos (
 	cancelado BOOLEAN NOT NULL,
 	aprobado BOOLEAN NOT NULL,
 	id_creador VARCHAR(20),
-	FOREIGN KEY (id_creador) REFERENCES Usuarios(id_usuario)
+	FOREIGN KEY (id_creador) REFERENCES Admins(id_admin)
 );
 CREATE TABLE Inscritos (
 	id_usuario VARCHAR(20),
@@ -99,59 +106,72 @@ VALUES (
 <li>ligula quisque hendrerit aliquam a dolor ut curae</li>
 <li>tellus praesent consectetur vehicula pulvinar leo sollicitudin</li>
 </ul>",
-	'2019-02-04 11:30:00',
+	'2019-02-04 13:30',
 	'Tetuan',
 	'c/ falsa, 11 3/4',
-	'img/before/evento1',
+	'img/evento1',
 	3,
 	false,
 	true,
-	'paulb');
+	'51511038P');
 	
 INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
 VALUES (
 	"Segundo evento de prueba",
 	"Lobortis ut scelerisque aliquam volutpat hendrerit magna cursus ut urna aenean faucibus, curae blandit ipsum turpis risus euismod cras pellentesque fermentum. Phasellus malesuada facilisis elementum dictum ut eros lacus quisque faucibus elementum, interdum sed curae sagittis luctus ornare egestas adipiscing sollicitudin luctus urna, congue netus fames senectus tellus nulla curabitur sapien donec.
 Mauris libero vivamus feugiat nisl egestas semper nibh non ipsum, dolor massa quisque eros sapien ornare amet purus, dapibus iaculis faucibus gravida sociosqu dui placerat etiam. Fames litora tristique felis aenean at vel nibh aptent bibendum, sagittis feugiat sagittis nulla mattis curae tortor habitant, consectetur lacus torquent eros integer et duis aenean.",
-	'2019-02-04 11:30:00',
+	'2019-02-04 11:30',
 	'Chamartin',
 	'c/ metro viejo, 11 3 B',
-	'img/before/evento2',
+	'img/evento2',
 	3,
 	false,
 	true,
-	'paulb');
+	'51511038P');
 INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
 VALUES (
 	"Tercer evento de prueba",
 	"Pulvinar torquent dui metus eget a platea a, justo feugiat consequat sapien erat ut cras, pulvinar felis scelerisque feugiat facilisis est.",
-	'2019-02-06 11:30:00',
+	'2019-02-06 9:00',
 	'Barajas',
 	'c/ de los aviones gemelos, 11 9 2001',
-	'img/before/evento3',
+	'img/evento3',
 	3,
 	false,
 	true,
-	'paulb');
+	'51511038P');
 INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
 VALUES (
 	"Cuarto evento de prueba",
 	"Dapibus etiam malesuada diam ut potenti facilisis lorem morbi blandit nec varius, nam ut aenean enim donec justo gravida eleifend magna tempus, ad sem elit.
 Auctor tempus integer porta scelerisque donec sagittis. Mauris curabitur sem praesent hendrerit suscipit, purus donec per eu quisque cursus, platea rhoncus scelerisque volutpat.
 Quam semper donec aptent egestas blandit suspendisse, quam pretium cursus curabitur lectus adipiscing, proin curabitur ut sem nullam. Netus commodo eros, placerat.",
-	'2019-02-10 11:30:00',
+	'2019-02-10 14:30',
 	'Ciudad Lineal',
 	'c/ curva, 211 B Der',
-	'img/before/evento4',
+	'img/evento4',
 	3,
 	false,
 	true,
-	'paulb');	
+	'51511038P');	
 	
 INSERT INTO HobbiesEventos
 VALUES
 	(1, 3),
-	(1, 5);
+	(1, 5),
+	(2, 1),
+	(2, 2),
+	(2, 3),
+	(2, 4),
+	(2, 5),
+	(3, 9),
+	(3, 4),
+	(3, 6),
+	(4, 1),
+	(4, 3),
+	(4, 5),
+	(4, 7),
+	(4, 9);
 INSERT INTO Inscritos VALUES ('paulb', 1);
 INSERT INTO Inscritos VALUES ('alvaro', 1);
 INSERT INTO Inscritos VALUES ('borja', 1);
