@@ -43,7 +43,7 @@ function makeBtnLogin(active, icon) {
 	var a = $('<a class="nav-link">');
 	var i = $('<i class="material-icons align-middle pb-2">');
 	i.text(icon);
-	a.attr("href", "iniciar_sesion.html").append("iniciar sesión", i);
+	a.attr("href", "iniciar_sesion.jsp").append("iniciar sesión", i);
 	if (active == -1) a.addClass("active");
 	li.append(a);
 	return li;
@@ -59,7 +59,7 @@ function makeBtnAcount(active, icon){
 	var i_btn = $('<i class="material-icons align-middle pb-2">');
 	i_btn.text(icon);
 	btn_dropdown.click($(location).attr('href',"logout")).append("cerrar sesión", i_btn);
-	a_dropdown.attr("href", "cuenta.html");
+	a_dropdown.attr("href", "cuenta.jsp");
 	div.append(a_dropdown, btn_dropdown);
 	if (active == -1) {
 		a.addClass("active");
@@ -99,9 +99,30 @@ function makeCarrousel(dir_img, num_img) {
 
 //Crea las partes del login y del signup
 function makeAccess(){
-	var ages = 		["---Rango de edad---","< 18","18 - 25","26 - 30","31 - 35","36 - 40", "> 40"];
-	var districs = 	["---Barrio---","Arganzuela","Barajas","Canillejas","Carabanchel","Centro","Chamartin","Chamberi","Ciudad Lineal","El pardo-Fuencarral","Hortaleza","Latina","Moncloa","Moratalaz","Puente de Vallecas","Retiro","Salamanca","Tetuan","Usera","Vicalvaro","Villa de Vallecas","Villaverde"];
-	var hobbies = 	["futbol", "baloncesto", "senderismo", "juegos de mesa", "cine", "cartas", "museos", "gastronomía", "manualidades"];
+	var ages = ["---Rango de edad---","< 18","18 - 25","26 - 30","31 - 35","36 - 40", "> 40"];
+	var districs = [
+		"---Barrio---",
+		"Arganzuela","Barajas",
+		"Canillejas",
+		"Carabanchel",
+		"Centro",
+		"Chamartin",
+		"Chamberi",
+		"Ciudad Lineal",
+		"El pardo-Fuencarral",
+		"Hortaleza",
+		"Latina",
+		"Moncloa",
+		"Moratalaz",
+		"Puente de Vallecas",
+		"Retiro",
+		"Salamanca",
+		"Tetuan",
+		"Usera",
+		"Vicalvaro",
+		"Villa de Vallecas",
+		"Villaverde"
+	];
 	var name_hobbies = "hobbies_signup";
 	var select_age = $("#age_signup");
 	var select_distric = $("#distric_signup");
@@ -109,7 +130,6 @@ function makeAccess(){
 
 	makeSelect(select_age, ages, false);
 	makeSelect(select_distric, districs, true);
-	makeChecks(div_checks, hobbies, name_hobbies, "col-md-6");
 }
 
 /*
@@ -128,29 +148,6 @@ function makeSelect(select, list, value_equals_text) {
 		else value = i;
 		option.attr("value",value).text(elem);
 		select.append(option)
-	});
-}
-
-/*
- *Rellena un div con checks de opción multiple
- *	div: esel div a rellenar
- *	list: lista con los valores de los checks
- *	name_check: name que se le quiere dar a los checks
- *	class_div_check: clase adicional que se le puede añadir al check, "" para no añadir nada
- */
-function makeChecks(div, list, name_check, class_div_check){
-	var div = $(div);
-	$.each(list, function(i, elem){
-		let div_check = $('<div class="custom-control custom-checkbox">');
-		let check = $('<input type="checkbox" class="custom-control-input">');
-		let label = $('<label class="custom-control-label">');
-		let id_check = name_check+"_"+i;
-		check.attr({id: id_check,
-					name: name_check,
-					value: elem});
-		label.attr("for", id_check).text(elem);
-		div_check.addClass(class_div_check).append([check, label]);
-		div.append(div_check);
 	});
 }
 
@@ -198,4 +195,29 @@ function collapseHistorial(){
 		historial.removeClass("d-none d-md-block");
 	else 
 		historial.addClass("d-none d-md-block");
+}
+
+// SIN USO AL MIGRAR A JSP
+
+/*
+ *Rellena un div con checks de opción multiple
+ *	div: es el div a rellenar
+ *	list: lista con los valores de los checks
+ *	name_check: name que se le quiere dar a los checks
+ *	class_div_check: clase adicional que se le puede añadir al check, "" para no añadir nada
+ */
+function makeChecks(div, list, name_check, class_div_check){
+	var div = $(div);
+	$.each(list, function(i, elem){
+		let div_check = $('<div class="custom-control custom-checkbox">');
+		let check = $('<input type="checkbox" class="custom-control-input">');
+		let label = $('<label class="custom-control-label">');
+		let id_check = name_check+"_"+i;
+		check.attr({id: id_check,
+					name: name_check,
+					value: elem});
+		label.attr("for", id_check).text(elem);
+		div_check.addClass(class_div_check).append([check, label]);
+		div.append(div_check);
+	});
 }

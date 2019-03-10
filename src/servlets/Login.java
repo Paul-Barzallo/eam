@@ -1,11 +1,11 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.persistence.TypedQuery;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -39,7 +39,9 @@ public class Login extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+		/*System.out.println("entra en get");
 		HttpSession sesion = request.getSession(true);
+		System.out.println("id: "+sesion.getId());
 		String name = (String)sesion.getAttribute("name");
 		
 		if (name == null) {
@@ -50,6 +52,8 @@ public class Login extends HttpServlet {
 			
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {
+					System.out.println("cookie name: "+cookie.getName());
+					System.out.println("cookie valor: "+cookie.getValue());
 					if (cookie.getName().equals("user")) {
 						user = cookie.getValue();
 					} else if (cookie.getName().equals("password")) {
@@ -65,33 +69,42 @@ public class Login extends HttpServlet {
 						Cookie cookie2 = new Cookie("password",usuario.getPassword());
 						cookie1.setMaxAge(60*60*24*30); //1 mes
 						cookie2.setMaxAge(60*60*24*30);
+						cookie1.setPath("/");
+						cookie2.setPath("/");
 						response.addCookie(cookie1);
 						response.addCookie(cookie2);
-					} else
-						sesion.invalidate();
-				} else
-					sesion.invalidate();
+					} else {
+						System.out.println("contraseña incorrecta:");
+						System.out.println(password);
+					}
+				} else {
+					System.out.println("usuario incorrecto:");
+					System.out.println(user);
+				}
+			} else {
+				System.out.println("sin cookies");
 			}
-		} 
+		} */
 	}
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		PrintWriter respuesta;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+		Usuario usuario;
+		String sql;
+		TypedQuery<Usuario> query;
+		
 		String user = request.getParameter("user_login");
 		String password = request.getParameter("pwd_login");
 		String remember = request.getParameter("remember");
-		HttpSession sesion = request.getSession(true);
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
-		respuesta = response.getWriter();
 		
-		TypedQuery<Usuario> query = db.getEM().createQuery("SELECT u FROM Usuario u WHERE u.password = ?1", Usuario.class);
+		HttpSession sesion = request.getSession(true);
+		
+		sql = "SELECT u FROM Usuario u WHERE u.password = ?1";
+		query = db.getEM().createQuery(sql, Usuario.class);
 		query.setParameter(1, MD5(password));
-		if (query.getResultList().size() == 0) {
+		usuario = query.getSingleResult();
+		/*if (usuario == null) {
 			sesion.invalidate();
-			respuesta.append("0");
-		} else {
-			Usuario usuario = (Usuario)query.getResultList().get(0);
+		} else */if ((usuario.getIdUsuario().equals(user))){
 			sesion.setAttribute("name", usuario.getIdUsuario());
 			sesion.setAttribute("esAdmin", usuario.getAdmins().size());
 			if (remember == "true") {
@@ -99,11 +112,21 @@ public class Login extends HttpServlet {
 				Cookie cookie2 = new Cookie("password",usuario.getPassword());
 				cookie1.setMaxAge(60*60*24*30); //1 mes
 				cookie2.setMaxAge(60*60*24*30);
+				//cookie1.setValue("123");
+				//cookie1.setPath("\\");
 				response.addCookie(cookie1);
 				response.addCookie(cookie2);
 			}
-			respuesta.append("1");
-		}
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			try {
+				rd.forward(request, response);
+			} catch(IOException e) {
+				System.out.println(e);
+			}
+			
+		} /*else {
+			sesion.invalidate();
+		}*/
 	}
 	
 	private static String MD5(String text) {

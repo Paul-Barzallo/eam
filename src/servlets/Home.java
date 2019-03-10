@@ -23,12 +23,12 @@ public class Home extends HttpServlet {
 		super.init(config);
 		ServletContext contextoAplicacion = this.getServletContext();
 		DB db = new DB();
-		contextoAplicacion.setAttribute("miLogicaBD", db);
+		contextoAplicacion.setAttribute("db", db);
 	}
 
 	public void destroy() {
 		ServletContext contextoAplicacion = this.getServletContext();
-		DB db = (DB)contextoAplicacion.getAttribute("miLogicaBD");
+		DB db = (DB)contextoAplicacion.getAttribute("db");
 		db.getEM().close();
 	}
 

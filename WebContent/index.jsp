@@ -12,10 +12,14 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript">
 		var type_user;
 	<%	Integer type_user;
-		request.getRequestDispatcher("/login").include(request, response);
+		System.out.println("entra en index");
+		//request.getRequestDispatcher("/login").include(request, response);
+		System.out.println("id: "+session.getId());
 		try {
 			type_user = (Integer)session.getAttribute("esAdmin");
+			System.out.println("try: "+type_user);
 		} catch(Exception e) {
+			System.out.println("catch: "+e);
 			type_user = null;
 		}
 		if (type_user == null) { %>

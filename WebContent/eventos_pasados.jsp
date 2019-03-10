@@ -5,7 +5,8 @@ pageEncoding="UTF-8" %>
 	java.util.LinkedList,
 	java.util.Date,java.text.DateFormat,
 	javax.persistence.*,
-	db.DB,javax.servlet.ServletContext,
+	db.DB,
+	javax.servlet.ServletContext,
 	models.*"
 %>
 <jsp:useBean id='db' class='db.DB' scope='application' />
@@ -104,8 +105,7 @@ pageEncoding="UTF-8" %>
 				</div>
 			</aside>
 			<section id="eventos" class="container col-xl-8 col-md-7 col-12 px-3 mt-2"> 
-			<%
-				DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
+			<%	DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
 				TypedQuery<Evento> query = db.getEM().createQuery("SELECT e FROM Evento e", Evento.class);
 				for (Evento e : query.getResultList()) { %>
 					<article class="evento media border bg-light p-3 my-2">
