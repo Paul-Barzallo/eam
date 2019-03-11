@@ -1,5 +1,5 @@
 /*
- *Crea el Nav diferenciando los enlaces seun el tipo de usuario
+ *Crea el Nav diferenciando los enlaces segun el tipo de usuario
  *	active: indica la posisión del enlace activo,-3 para HOME, -2 para cuenta y -1 para iniciar sesión y cerrar sesión
  *	type_user: identifica si es un usuario (0), un admin (1) o no está logueado (-1)
  */
@@ -54,19 +54,16 @@ function makeBtnAcount(active, icon){
 	var li = $('<li class="nav-item dropdown">');
 	var a = $('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Cuenta</a>');
 	var div = $('<div class="dropdown-menu dropdown-menu-right">');
-	var a_dropdown = $('<a class="dropdown-item">Configurar</a>');
-	var btn_dropdown = $('<button class="btn btn-link dropdown-item" type="button" id="btn_logout">');
-	var i_btn = $('<i class="material-icons align-middle pb-2">');
-	i_btn.text(icon);
-	btn_dropdown.click($(location).attr('href',"logout")).append("cerrar sesión", i_btn);
-	a_dropdown.attr("href", "cuenta.jsp");
-	div.append(a_dropdown, btn_dropdown);
-	if (active == -1) {
+	var a_conf = $('<a class="dropdown-item">Configurar</a>');
+	var a_logout = $('<a class="dropdown-item">Cerrar sesión</a>');
+	var i_logout = $('<i class="material-icons align-middle pb-2">');
+	i_logout.text(icon);
+	a_logout.append(i_logout).attr("href", "logout");
+	a_conf.attr("href", "cuenta.jsp");
+	div.append(a_conf, a_logout);
+	if (active == -2) {
 		a.addClass("active");
-		btn_dropdown.addClass("active");
-	} else if (active == -2) {
-		a.addClass("active");
-		a_dropdown.addClass("active");
+		a_conf.addClass("active");
 	}
 	li.append(a, div);
 	return li;

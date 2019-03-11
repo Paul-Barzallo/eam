@@ -12,8 +12,7 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript">
 		var type_user;
 	<%	Integer type_user;
-		System.out.println("entra en index");
-		//request.getRequestDispatcher("/login").include(request, response);
+		request.getRequestDispatcher("/login").include(request, response);
 		System.out.println("id: "+session.getId());
 		try {
 			type_user = (Integer)session.getAttribute("esAdmin");
@@ -65,7 +64,7 @@ pageEncoding="UTF-8"%>
 					<p> -Te mostraremos eventos segun tus intereses</p>
 					<p> -Podras ver quienes se han apuntado a los eventos</p>
 					<p> -Tendras un registro de los eventos</p>
-					<p>-Puedes comentar los eventos a los que asististe</p>
+					<p> -Puedes comentar los eventos a los que asististe</p>
 				</div>
 			</div>
 		</article>
