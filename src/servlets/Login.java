@@ -57,7 +57,12 @@ public class Login extends HttpServlet {
 						password = cookie.getValue();
 					}
 				}
-				usuario = db.getEM().find(Usuario.class, user);
+				try {
+					usuario = db.getEM().find(Usuario.class, user);
+				}
+				catch (Exception e) {
+					usuario = null;
+				}
 				if (usuario != null) {
 					if (usuario.getPassword() == password) {
 						sesion.setAttribute("name", user);
