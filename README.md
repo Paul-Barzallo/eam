@@ -11,26 +11,33 @@ EVENTOS
 ## Prerrequisitos
 
 * Tener la BD instalada, en documents/queries.sql está el codigo para generar la DB en MySQL
-* Tener Apache Tomcat instalado
+* Tener Apache Tomcat 9 instalado
 
 ## Instalacion
 
-Al copiar el repositorio a eclipse da error porque no carga las librerias
-
-* tenemos que ir a Properties -> Project Facets
-
+* clonar el proyecto
+* importar en eclipse como proyecto normal (File > Import... > General > Projects from Folder or Archive)
+```suele dar error al importar como proyecto git```
 ![Screenshot](documents/tutorial/paso1.png)
-
-* hay que cambiar la versión de Java a la 1.8
-* activar Dinamic Web Module
-* activar JPA
-* activar Apache Tomcat en Runtimes 
-
+* configurar
+** eam > properties
+***		Project Facets
+****		activar runtimes > Apache Tomcat v9.0
+****		activar Dynamic Web Module
+****		activar JPA
+****		cambiar version de java a 1.8
 ![Screenshot](documents/tutorial/paso2.png)
-
-* Configurar JPA, el driver está en la carpeta principal
-
+***		JPA:
+****		Platform > EclipseLink 2.5.2
+****		Connection > MySQL
+*****			Driver
+******				Name/Type > 5.1
+******				JAR List > Edit > elegir el driver del proyecto (mysql-connector-java-5.1.47-bin)
+*****			Properties > general
 ![Screenshot](documents/tutorial/paso3.png)
+**	eam > JPA Content > persistence.xml > Connection > eclipse connection pool > (la misma configuracion de antes)
+![Screenshot](documents/tutorial/paso4.png)
+**	servers > new Server (si no estuviera ya) > Apache > Tomcat v9.0 Server > Next > Add > eam
 
 ## Creado con
 
