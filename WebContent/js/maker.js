@@ -163,9 +163,13 @@ function makeAlert(color, text, add_btn) {
 function makeFilter(){
 	var districs = 	["---Barrio---","Arganzuela","Barajas","Canillejas","Carabanchel","Centro","Chamartin","Chamberi","Ciudad Lineal","El pardo-Fuencarral","Hortaleza","Latina","Moncloa","Moratalaz","Puente de Vallecas","Retiro","Salamanca","Tetuan","Usera","Vicalvaro","Villa de Vallecas","Villaverde"];
 	var select_distric = $("#distric");
+	
+	var historial = $("#collapse-historial")
+	if (historial != undefined )
+		historial.click(collapseHistorial)
 
 	$("#collapse-filtros").click(collapseFiltro)
-	$("#collapse-historial").click(collapseHistorial)
+	
 	makeSelect(select_distric, districs, true);
 }
 
@@ -192,3 +196,16 @@ function collapseHistorial(){
 	else 
 		historial.addClass("d-none d-md-block");
 }
+
+function makeClickArticles(){
+	var articles = $("article");
+	$.each(articles, function (i, value){
+		let article = $(value);
+		article.click(clickArticle);
+	});
+}
+
+function clickArticle() {
+	$(location).attr('href',"evento.jsp?id="+$(this).attr("id"));
+}
+

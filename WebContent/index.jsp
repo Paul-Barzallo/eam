@@ -3,28 +3,10 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-	<%// carga los frameworks comunes: jquery, bootstrap... %>
-	<%@ include file='partes/head.html' %>
-	<script src="js/maker.js"></script>
-	
+	<% String titulo = "Home";%>
+	<%// carga la cabecera %>
+	<%@ include file='partes/head.jsp' %>
 	<script type="text/javascript">
-		var type_user;
-	<%	Boolean esAdmin;
-		request.getRequestDispatcher("/login").include(request, response);
-		try {
-			esAdmin = (Boolean)session.getAttribute("esAdmin");
-		} catch(Exception e) {
-			esAdmin = null;
-		}
-		if (esAdmin == null) { %>
-			type_user = -1;
-	<%	} else if (esAdmin.booleanValue()) { %>
-			type_user = 1;
-	<%	} else { %>
-			type_user = 0;
-	<%	} %>
 		function make() {
 			makeNav(-3, type_user);
 			makeCarrousel("img/home/", 3);

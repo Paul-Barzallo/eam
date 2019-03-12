@@ -5,36 +5,17 @@ pageEncoding="UTF-8"%>
 	java.util.LinkedList,
 	javax.persistence.*,
 	db.DB,
-	javax.servlet.ServletContext,
 	models.*"
 %>
 <jsp:useBean id='db' class='db.DB' scope='application' />
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>Iniciar sesión</title>
-	<%// carga los frameworks comunes: jquery, bootstrap... %>
-	<%@ include file='partes/head.html' %>
-	<script src="js/maker.js"></script>
+	<% String titulo = "Iniciar sesión";%>
+	<%// carga la cabecera %>
+	<%@ include file='partes/head.jsp' %>
 	<script src="js/validate.js"></script>
-	
 	<script type="text/javascript">
-		var type_user;
-	<%	Boolean esAdmin;
-		request.getRequestDispatcher("/login").include(request, response);
-		try {
-			esAdmin = (Boolean)session.getAttribute("esAdmin");
-		} catch(Exception e) {
-			esAdmin = null;
-		}
-		if (esAdmin == null) { %>
-			type_user = -1;
-	<%	} else if (esAdmin.booleanValue()) { %>
-			type_user = 1;
-	<%	} else { %>
-			type_user = 0;
-	<%	} %>
 		function make() {
 			makeNav(-1, type_user);
 			makeAccess();
