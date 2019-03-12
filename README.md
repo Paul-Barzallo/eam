@@ -34,7 +34,8 @@ suele dar error al importar como proyecto git
 * configurar: eam > properties > JPA:
 	* platform > EclipseLink 2.5.2
 	* Connection > MySQL > Driver
-	* > Name/Type > 5.1 / > JAR List > Edit > elegir el driver del proyecto (mysql-connector-java-5.1.47-bin)
+	* > Name/Type > 5.1
+	* > JAR List > Edit > elegir el driver del proyecto (mysql-connector-java-5.1.47-bin)
 	* Connection > MySQL > Properties > general
 	
 ![Screenshot](documents/tutorial/paso3.png)
@@ -42,8 +43,6 @@ suele dar error al importar como proyecto git
 * eam > JPA Content > persistence.xml > Connection > eclipse connection pool > (la misma configuracion de antes)
 
 ![Screenshot](documents/tutorial/paso4.png)
-
-* servers > new Server (si no estuviera ya) > Apache > Tomcat v9.0 Server > Next > Add > eam
 
 ## Creado con
 
