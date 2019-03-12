@@ -155,6 +155,22 @@ Quam semper donec aptent egestas blandit suspendisse, quam pretium cursus curabi
 	true,
 	'51511038P');	
 	
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES (
+	"Quinto evento de prueba",
+	"Dapibus etiam malesuada diam ut potenti facilisis lorem morbi blandit nec varius, nam ut aenean enim donec justo gravida eleifend magna tempus, ad sem elit.
+Auctor tempus integer porta scelerisque donec sagittis. diam ut potenti facilisis lorem morbi blandit nec varius, nam ut aenean enim donec justo gravida eleifend sem praesent hendrerit suscipit, purus donec per eu quisque cursus, platea rhoncus scelerisque volutpat.
+Quam semper donec aptent egestas blandit suspendisse, quam pretium cursus lectus adipiscing, proin curabitur ut sem nullam.
+curabitur lectus adipiscing, proin curabitur ut sem nullam. Netus commodo eros, placerat.",
+	'2019-04-10 8:30',
+	'Ciudad Lineal',
+	'c/ futura, 893 5 Der',
+	'img/evento5',
+	4,
+	false,
+	true,
+	'51511038P');
+	
 INSERT INTO HobbiesEventos
 VALUES
 	(1, 3),
@@ -171,7 +187,9 @@ VALUES
 	(4, 3),
 	(4, 5),
 	(4, 7),
-	(4, 9);
+	(4, 9),
+	(5, 6),
+	(5, 7);
 INSERT INTO Inscritos VALUES ('paulb', 1);
 INSERT INTO Inscritos VALUES ('alvaro', 1);
 INSERT INTO Inscritos VALUES ('borja', 1);

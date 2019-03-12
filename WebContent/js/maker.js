@@ -120,10 +120,8 @@ function makeAccess(){
 		"Villa de Vallecas",
 		"Villaverde"
 	];
-	var name_hobbies = "hobbies_signup";
 	var select_age = $("#age_signup");
 	var select_distric = $("#distric_signup");
-	var div_checks = $("#hobbies_signup");
 
 	makeSelect(select_age, ages, false);
 	makeSelect(select_distric, districs, true);
@@ -161,24 +159,23 @@ function makeAlert(color, text, add_btn) {
 	return alert;
 }
 
-
+//Rellena el select y pone los eventos en los botones de filtro e historial
 function makeFilter(){
 	var districs = 	["---Barrio---","Arganzuela","Barajas","Canillejas","Carabanchel","Centro","Chamartin","Chamberi","Ciudad Lineal","El pardo-Fuencarral","Hortaleza","Latina","Moncloa","Moratalaz","Puente de Vallecas","Retiro","Salamanca","Tetuan","Usera","Vicalvaro","Villa de Vallecas","Villaverde"];
-	var hobbies = 	["futbol", "baloncesto", "senderismo", "juegos de mesa", "cine", "cartas", "museos", "gastronomía", "manualidades"];
-	var name_hobbies = "hobbies_signup";
-	var select_distric = $("#distric_signup");
-	var div_checks = $("#hobbies_signup");
+	var select_distric = $("#distric");
 
 	$("#collapse-filtros").click(collapseFiltro)
 	$("#collapse-historial").click(collapseHistorial)
-
 	makeSelect(select_distric, districs, true);
-	makeChecks(div_checks, hobbies, name_hobbies, "");
 }
+
+//Oculta la pantalla de carga y muestra el contenido en las pantallas de eventos
 function hiddenLoad(){
 	$("#load").addClass("d-none");
 	$("#main").removeClass("d-none");
 }
+
+//Muestra y oculta los filtros
 function collapseFiltro(){
 	filtros = $("#filtros");
 	if (filtros.hasClass("d-none"))
@@ -186,35 +183,12 @@ function collapseFiltro(){
 	else 
 		filtros.addClass("d-none d-md-block");
 }
+
+//Muestra y oculta el historial
 function collapseHistorial(){
 	historial = $("#historial");
 	if (historial.hasClass("d-none"))
 		historial.removeClass("d-none d-md-block");
 	else 
 		historial.addClass("d-none d-md-block");
-}
-
-// SIN USO AL MIGRAR A JSP
-
-/*
- *Rellena un div con checks de opción multiple
- *	div: es el div a rellenar
- *	list: lista con los valores de los checks
- *	name_check: name que se le quiere dar a los checks
- *	class_div_check: clase adicional que se le puede añadir al check, "" para no añadir nada
- */
-function makeChecks(div, list, name_check, class_div_check){
-	var div = $(div);
-	$.each(list, function(i, elem){
-		let div_check = $('<div class="custom-control custom-checkbox">');
-		let check = $('<input type="checkbox" class="custom-control-input">');
-		let label = $('<label class="custom-control-label">');
-		let id_check = name_check+"_"+i;
-		check.attr({id: id_check,
-					name: name_check,
-					value: elem});
-		label.attr("for", id_check).text(elem);
-		div_check.addClass(class_div_check).append([check, label]);
-		div.append(div_check);
-	});
 }

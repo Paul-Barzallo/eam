@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Iniciar sesión</title>
 	<%// carga los frameworks comunes: jquery, bootstrap... %>
 	<%@ include file='partes/head.html' %>
 	<script src="js/maker.js"></script>
@@ -21,22 +21,22 @@ pageEncoding="UTF-8"%>
 	
 	<script type="text/javascript">
 		var type_user;
-	<%	Integer type_user;
-		//request.getRequestDispatcher("/login").include(request, response);
+	<%	Boolean esAdmin;
+		request.getRequestDispatcher("/login").include(request, response);
 		try {
-			type_user = (Integer)session.getAttribute("esAdmin");
+			esAdmin = (Boolean)session.getAttribute("esAdmin");
 		} catch(Exception e) {
-			type_user = null;
+			esAdmin = null;
 		}
-		if (type_user == null) { %>
+		if (esAdmin == null) { %>
 			type_user = -1;
-	<%	} else if (type_user == 0) { %>
-			type_user = 0;
-	<%	} else if (type_user == 1) { %>
+	<%	} else if (esAdmin.booleanValue()) { %>
 			type_user = 1;
+	<%	} else { %>
+			type_user = 0;
 	<%	} %>
 		function make() {
-			//makeNav(-1, type_user);
+			makeNav(-1, type_user);
 			makeAccess();
 			addValidatesAccess();
 		}
@@ -65,31 +65,32 @@ pageEncoding="UTF-8"%>
 						pwd_login
 					*/%>
 					<div class="tab-pane container active show" id="login">
-						<form id="form_login" action="login" method="post">
+						<form id="form_login">
 							<%// User %>
 							<div class="input-group mb-3 mt-4">
 								<div class="input-group-prepend">
 									<i class="input-group-text material-icons">person</i>
 								</div>
-								<input class="form-control" type="text" placeholder="Usuario" id="user_login" name="user_login">
+								<input class="form-control" type="text" placeholder="Usuario" id="user_login" name="user">
 							</div>
 							<%// Password %>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<i class="input-group-text material-icons">vpn_key</i>
 								</div>
-								<input class="form-control" type="password" placeholder="Contraseña" id="pwd_login" name="pwd_login">
+								<input class="form-control" type="password" placeholder="Contraseña" id="pwd_login" name="pwd">
 							</div>
-							<div id="error_login" class="mb-3"></div>
 							<%// Remember me %>
-							<div class="custom-control custom-switch">
+							<div class="custom-control custom-switch mb-3">
 								<input type="checkbox" class="custom-control-input" id="switch_login" name="switch_login">
 								<label class="custom-control-label" for="switch_login">Recordarme</label>
 							</div>
 							<%// Submit %>
-							<div class="d-flex justify-content-center mt-3">
+							<div class="d-flex justify-content-center">
 								<button class="btn btn-primary pr-5 pl-5" type="button" id="btn_login">Iniciar sesión</button>
 							</div>
+							<%// Error en el login %>
+							<div id="error_login" class="mb-3"></div>
 						</form>
 					</div>
 					<%/* Signup 
@@ -103,13 +104,13 @@ pageEncoding="UTF-8"%>
 						hobbies_sigunp
 					*/%>
 					<div class="tab-pane container fade" id="signup">
-						<form id="fomr_signup">
+						<form id="form_signup">
 							<%// User %>
 							<div class="input-group mb-3 mt-4">
 								<div class="input-group-prepend">
 									<i class="input-group-text material-icons">person</i>
 								</div>
-								<input class="form-control" type="text" placeholder="Usuario" id="user_signup" name="user_signup">
+								<input class="form-control" type="text" placeholder="Usuario" id="user_signup" name="user">
 							</div>
 							<%// Alert Usuario %>
 							<div class="mb-3"></div>
@@ -118,7 +119,7 @@ pageEncoding="UTF-8"%>
 								<div class="input-group-prepend">
 									<i class="input-group-text material-icons">vpn_key</i>
 								</div>
-								<input class="form-control" type="password" placeholder="Contraseña" id ="pwd_signup_1" name="pwd_signup_1">
+								<input class="form-control" type="password" placeholder="Contraseña" id ="pwd_signup_1" name="pwd">
 							</div>
 							<%// Alert Contraseña incorrecta %>
 							<div class="mb-3"></div>
@@ -177,6 +178,8 @@ pageEncoding="UTF-8"%>
 							<div class="d-flex justify-content-center">
 								<button class="btn btn-primary pr-5 pl-5" id="btn_signup" type="button">Registrarse</button>
 							</div>
+							<%// Error en el Sigup %>
+							<div id="error_signup" class="mb-3"></div>
 						</form>
 					</div>
 				</div>

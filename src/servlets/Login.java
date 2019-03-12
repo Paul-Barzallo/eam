@@ -1,11 +1,9 @@
 package servlets;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.io.PrintWriter;
 
 import javax.persistence.TypedQuery;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import db.DB;
 import models.Usuario;
+import security.Encrypt;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -39,9 +38,7 @@ public class Login extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-		/*System.out.println("entra en get");
 		HttpSession sesion = request.getSession(true);
-		System.out.println("id: "+sesion.getId());
 		String name = (String)sesion.getAttribute("name");
 		
 		if (name == null) {
@@ -73,75 +70,54 @@ public class Login extends HttpServlet {
 						cookie2.setPath("/");
 						response.addCookie(cookie1);
 						response.addCookie(cookie2);
-					} else {
-						System.out.println("contraseña incorrecta:");
-						System.out.println(password);
-					}
-				} else {
-					System.out.println("usuario incorrecto:");
-					System.out.println(user);
-				}
-			} else {
-				System.out.println("sin cookies");
-			}
-		} */
+					} 
+				} 
+			} 
+		} 
 	}
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		PrintWriter respuesta;
 		Usuario usuario;
-		String sql;
 		TypedQuery<Usuario> query;
 		
-		String user = request.getParameter("user_login");
-		String password = request.getParameter("pwd_login");
+		String user = request.getParameter("user");
+		String password = request.getParameter("pwd");
 		String remember = request.getParameter("remember");
+		
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		respuesta = response.getWriter();
 		
 		HttpSession sesion = request.getSession(true);
 		
-		sql = "SELECT u FROM Usuario u WHERE u.password = ?1";
-		query = db.getEM().createQuery(sql, Usuario.class);
-		query.setParameter(1, MD5(password));
-		usuario = query.getSingleResult();
-		/*if (usuario == null) {
-			sesion.invalidate();
-		} else */if ((usuario.getIdUsuario().equals(user))){
+		query = db.getEM().createQuery("SELECT u FROM Usuario u WHERE u.password = ?1", Usuario.class);
+		query.setParameter(1, Encrypt.MD5(password));
+		try {
+			usuario = query.getSingleResult();
+		} catch (Exception e) {
+			usuario = null;
+		}
+		if (usuario == null) {
+			respuesta.append("0");
+		} else if ((usuario.getIdUsuario().equals(user))){
 			sesion.setAttribute("name", usuario.getIdUsuario());
-			sesion.setAttribute("esAdmin", usuario.getAdmins().size());
+			sesion.setAttribute("esAdmin", usuario.getEsAdmin());
 			if (remember == "true") {
 				Cookie cookie1 = new Cookie("user",user);
 				Cookie cookie2 = new Cookie("password",usuario.getPassword());
 				cookie1.setMaxAge(60*60*24*30); //1 mes
 				cookie2.setMaxAge(60*60*24*30);
 				//cookie1.setValue("123");
-				//cookie1.setPath("\\");
+				//cookie1.setPath("/");
 				response.addCookie(cookie1);
 				response.addCookie(cookie2);
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			try {
-				rd.forward(request, response);
-			} catch(IOException e) {
-				System.out.println(e);
-			}
-			
-		} /*else {
-			sesion.invalidate();
-		}*/
+			respuesta.append("1");
+		} else {
+			respuesta.append("0");
+		}
 	}
 	
-	private static String MD5(String text) {
-		MessageDigest md;
-		try {
-			md = MessageDigest.getInstance("MD5");
-			md.update(text.getBytes());
-		    byte byteData[] = md.digest();
-		    StringBuffer sb = new StringBuffer();
-	        for (int i = 0; i < byteData.length; i++)
-	            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-			return sb.toString();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-			return null;
-		} 
-	}
+	
 }

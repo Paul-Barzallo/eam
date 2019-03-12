@@ -61,6 +61,14 @@ public class Hobby implements Serializable {
 		this.eventos = new LinkedList<>();
 		this.usuarios = new LinkedList<>();
 	}
+	
+	public void addEvento(Evento e) {
+		this.eventos.add(e);
+	}
+	
+	public void addUsuario(Usuario u) {
+		this.usuarios.add(u);
+	}
 
 	public int getIdHobbie() {
 		return this.idHobbie;

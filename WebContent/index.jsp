@@ -11,22 +11,19 @@ pageEncoding="UTF-8"%>
 	
 	<script type="text/javascript">
 		var type_user;
-	<%	Integer type_user;
+	<%	Boolean esAdmin;
 		request.getRequestDispatcher("/login").include(request, response);
-		System.out.println("id: "+session.getId());
 		try {
-			type_user = (Integer)session.getAttribute("esAdmin");
-			System.out.println("try: "+type_user);
+			esAdmin = (Boolean)session.getAttribute("esAdmin");
 		} catch(Exception e) {
-			System.out.println("catch: "+e);
-			type_user = null;
+			esAdmin = null;
 		}
-		if (type_user == null) { %>
+		if (esAdmin == null) { %>
 			type_user = -1;
-	<%	} else if (type_user == 0) { %>
-			type_user = 0;
-	<%	} else if (type_user == 1) { %>
+	<%	} else if (esAdmin.booleanValue()) { %>
 			type_user = 1;
+	<%	} else { %>
+			type_user = 0;
 	<%	} %>
 		function make() {
 			makeNav(-3, type_user);

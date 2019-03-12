@@ -70,6 +70,14 @@ public class Usuario implements Serializable {
 		this.esAdmin = false;
 		
 	}
+	
+	public void addEvento(Evento e) {
+		this.eventos.add(e);
+	}
+	
+	public void addHobby(Hobby h) {
+		this.hobbies.add(h);
+	}
 
 	public String getIdUsuario() {
 		return this.idUsuario;
@@ -131,8 +139,9 @@ public class Usuario implements Serializable {
 		return this.admins;
 	}
 
-	public void setAdmins(List<Admin> admins) {
-		this.admins = admins;
+	public void setAdmin(Admin a) {
+		this.admins.clear();
+		this.admins.add(a);
 	}
 
 	public Admin addAdmin(Admin admin) {

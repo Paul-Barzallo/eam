@@ -1,3 +1,4 @@
+// agrega las validaciones a los diferentes campos de los 2 formularios
 function addValidatesAccess() {
 	$('#signup input[type="password"]').blur(validarPasswords);
 	$('#email_signup').blur(validarEmail);
@@ -5,6 +6,7 @@ function addValidatesAccess() {
 	$('#btn_login').click(submitLogin);
 }
 
+// valida el registro de usuario antes de hacer submit
 function submitSignup() {
 	count = 0;
 	if (!validarUser()) count+=1;
@@ -13,58 +15,85 @@ function submitSignup() {
 	if (!validarEdad()) count+=1;
 	if (!validarBarrio()) count+=1;
 	if (!validarHobbies()) count+=1;
-	if (count == 0) $("#form_signup").submit();
+	if (count == 0) { 
+		var _hobbies = []
+		var __hobbies = $('input[type=checkbox][name=hobbies_signup]:checked')
+		$.each(__hobbies, function(i, value){
+			_hobbies.push($(value).val());
+		})
+
+		$.post("signup", {
+			user: $("#user_signup").val(),
+			pwd: $("#pwd_signup_1").val(),
+			email: $('#email_signup').val(),
+			age: $('#age_signup').val(),
+			distric: $('#distric_signup').val(),
+			hobbies: _hobbies
+		})
+		/* 
+		 * respuestas:
+		 *  0: correcto
+		 *  1: usuario repetido
+		 *  2: correo repetido
+		 */
+		.done(function(respuesta, status){
+			console.log("llega done");
+			if (respuesta == 1) {
+				$('#user_signup').parent().next().empty().append(makeAlert("alert-danger","Ese nombre de usuario ya está en uso", true));
+			} else if (respuesta == 2) {
+				$('#email_signup').parent().next().empty().append(makeAlert("alert-danger","Ese email ya está en uso", true));
+			} else
+				$(location).attr('href',"./");
+		})
+		.fail(function(xhr, status, error){
+			$("#error_signup").empty().append(makeAlert("alert-danger","Error al conectar con el servidor", true));
+		});
+	}
 }
 
+// valida los datos de inicio antes de hacer submit()
 function submitLogin(){
-	var div = $("#error_login");
-	var user = $("#user_login").val();
-	var pwd = $("#pwd_login").val();
-	var _switch_login = $('#switch_login').prop('checked');
-    div.empty();
-
-	$.post("validateLogin", {user_login: user, pwd_login: pwd, remember: _switch_login})
-	.done(function(respuesta, status){
-		if (respuesta == 1) $("#form_login").submit();
-    	else div.append(makeAlert("alert-danger","Usuario o contraseña incorrecta", true));
+	$.post("login", {
+		user: $("#user_login").val(),
+		pwd: $("#pwd_login").val(),
+		remember:$('#switch_login').prop('checked')
 	})
+	.done(function(respuesta, status){
+		if (respuesta == 1)
+			$(location).attr('href',"./");
+    	else
+    		$("#error_login").empty().append(makeAlert("alert-danger","Usuario o contraseña incorrecta", true));
+    })
 	.fail(function(xhr, status, error){
-		div.append(makeAlert("alert-danger","Error al conectar con el servidor", true));
+		$("#error_login").empty().append(makeAlert("alert-danger","Error al conectar con el servidor", true));
 	});
 }
 
 function validarUser() {
 	var user = $('#user_signup');
 	if (user.val() == ""){
-		user.parent().next().append(makeAlert("alert-danger","El usuario no puede estar vacío", true));
+		user.parent().next().empty().append(makeAlert("alert-danger","El usuario no puede estar vacío", true));
 		return false;
 	}
 	return true;
 }
 function validarPasswords() {
-	var pwd1 = $(this);
-	var pwd2;
+	var pwd1 = $('#pwd_signup_1');
+	var pwd2 = $('#pwd_signup_2');
 
-	if ($('#pwd_signup_1').val() != ""){
-		$('#pwd_signup_1').parent().next().empty();
-		$('#pwd_signup_2').parent().next().empty();
-	}
-	
-
-	if (pwd1.attr("id") == undefined){
-		pwd1 = $('#pwd_signup_1');
-		pwd2 = $('#pwd_signup_2');
-		if (pwd1.val() == "" && pwd2.val() == "") {
-			pwd1.parent().next().append(makeAlert("alert-danger","La contraseña no puede estar vacía", true));
-			return false;
+	/*
+	 * '$(this).attr("id") == undefined' lo uso para indicar que la funcion inicie solo al pulsar el boton de registro
+	 * porque cuando se ejecuta desde el blur del input this si tiene id
+	 */
+	if ($(this).attr("id") == undefined &&  pwd1.val() == "" && pwd2.val() == "") {
+		pwd1.parent().next().empty().append(makeAlert("alert-danger","La contraseña no puede estar vacía", true));
+		return false;
+	} else if (pwd1.val() != pwd2.val()){
+		if ( pwd1.val() != "" && pwd2.val() != ""){
+			pwd1.parent().next().empty().append(makeAlert("alert-danger","Las contraseñas no coinciden", true));
+		} else if ($(this).attr("id") == undefined){
+			pwd1.parent().next().empty().append(makeAlert("alert-danger","Las contraseñas no coinciden", true));
 		}
-	}
-	
-	if (pwd1.attr("id").endsWith("1")) pwd2 = $("#pwd_signup_2");
-	else pwd2 = $("#pwd_signup_1");
-
-	if (pwd1.val() != pwd2.val() && pwd1.val() != "" && pwd2.val() != ""){
-		pwd1.parent().next().append(makeAlert("alert-danger","Las contraseñas no coinciden", true));
 		return false;
 	}
 	return true;
@@ -74,12 +103,13 @@ function validarEmail() {
 	if (email.val() != "") email.parent().next().empty();
 
 	if ($(this).attr("id") == undefined && email.val() == ""){
-		email.parent().next().append(makeAlert("alert-danger","El email no puede estar vacío", true));
+		email.parent().next().empty().append(makeAlert("alert-danger","El email no puede estar vacío", true));
 		return false;
 	}
-	var regular_expression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //expresión regular para validar la estructura del email
+	// expresión regular para validar la estructura del email
+	var regular_expression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
 	if (!regular_expression.test(email.val()) && email.val() != ""){
-		email.parent().next().append(makeAlert("alert-danger","El email no es correcto", true));
+		email.parent().next().empty().append(makeAlert("alert-danger","El email no es correcto", true));
 		return false;
 	}
 	return true;
