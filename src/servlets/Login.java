@@ -71,8 +71,6 @@ public class Login extends HttpServlet {
 						Cookie cookie2 = new Cookie("password",usuario.getPassword());
 						cookie1.setMaxAge(60*60*24*30); //1 mes
 						cookie2.setMaxAge(60*60*24*30);
-						cookie1.setPath("/");
-						cookie2.setPath("/");
 						response.addCookie(cookie1);
 						response.addCookie(cookie2);
 					} 
@@ -96,8 +94,9 @@ public class Login extends HttpServlet {
 		
 		HttpSession sesion = request.getSession(true);
 		
-		query = db.getEM().createQuery("SELECT u FROM Usuario u WHERE u.password = ?1", Usuario.class);
-		query.setParameter(1, Encrypt.MD5(password));
+		query = db.getEM().createQuery("SELECT u FROM Usuario u WHERE u.idUsuario = ?1 AND u.password = ?2", Usuario.class);
+		query.setParameter(1, user);
+		query.setParameter(2, Encrypt.MD5(password));
 		try {
 			usuario = query.getSingleResult();
 		} catch (Exception e) {
@@ -105,22 +104,18 @@ public class Login extends HttpServlet {
 		}
 		if (usuario == null) {
 			respuesta.append("0");
-		} else if ((usuario.getIdUsuario().equals(user))){
+		} else {
 			sesion.setAttribute("name", usuario.getIdUsuario());
 			sesion.setAttribute("esAdmin", usuario.getEsAdmin());
-			if (remember == "true") {
+			if ("true".equals(remember)) {
 				Cookie cookie1 = new Cookie("user",user);
 				Cookie cookie2 = new Cookie("password",usuario.getPassword());
 				cookie1.setMaxAge(60*60*24*30); //1 mes
 				cookie2.setMaxAge(60*60*24*30);
-				//cookie1.setValue("123");
-				//cookie1.setPath("/");
 				response.addCookie(cookie1);
 				response.addCookie(cookie2);
 			}
 			respuesta.append("1");
-		} else {
-			respuesta.append("0");
 		}
 	}
 	

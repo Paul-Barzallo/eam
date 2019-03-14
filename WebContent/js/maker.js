@@ -69,7 +69,7 @@ function makeBtnAcount(active, icon){
 	return li;
 }
 
-//Crea un carrousel de imagenes
+//Rellena un carrousel de imagenes
 //.carousel-indicators debe tener id="carrousel-indicador"
 //.carousel-inner debe tener id="carrousel-imgs"
 // dir_img -> la ruta relativa de la carpeta donde están las imagenes a cargar
@@ -209,3 +209,12 @@ function clickArticle() {
 	$(location).attr('href',"evento.jsp?id="+$(this).attr("id"));
 }
 
+function makeEventoText(){
+	$(document).ready(function() {
+	    $.ajax({
+	        url: "http://localhost:8080/eamREST/mensaje?id=1"
+	    }).then(function(data) {
+	       $('#main').append(data);
+	    });
+	});
+}
