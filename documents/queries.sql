@@ -196,7 +196,33 @@ INSERT INTO Inscritos VALUES ('borja', 1);
 
 INSERT INTO Usuarios
 INSERT INTO `usuarios` 
-VALUES ('adrian','a722c63db8ec8625af6cf71cb8c2d939','adrian@gmail.com',2,'Barajas',0,1),('alberto','a722c63db8ec8625af6cf71cb8c2d939','alberto@gmail.com',1,'Arganzuela',0,1),('almudena','a722c63db8ec8625af6cf71cb8c2d939','almudena@gmail.com',3,'Canillejas',0,1),('alvaro','7e58d63b60197ceb55a1c487989a3720','avillanovaf@gmail.com',2,'Latina',1,1),('borja','92877af70a45fd6a2ed7fe81e1236b78','borja@gmail.com',2,'Arganzuela',1,1),('diana','a722c63db8ec8625af6cf71cb8c2d939','wonderwoman@gmail.com',4,'Carabanchel',0,1),('fabio','a722c63db8ec8625af6cf71cb8c2d939','fabio@gmail.com',5,'Centro',0,1),('gema','a722c63db8ec8625af6cf71cb8c2d939','gema@gmail.com',6,'Chamartin',0,1),('hector','a722c63db8ec8625af6cf71cb8c2d939','troya@gmail.com',1,'Chamberi',0,1),('ines','a722c63db8ec8625af6cf71cb8c2d939','ines@gmail.com',2,'Ciudad Lineal',0,1),('jacinto','a722c63db8ec8625af6cf71cb8c2d939','benavente@plaza.net',3,'Latina',0,1),('jaime','a722c63db8ec8625af6cf71cb8c2d939','jaime@correo.es',3,'Latina',0,1),('jessica','a722c63db8ec8625af6cf71cb8c2d939','jessica@choni.es',2,'Usera',0,1),('jonatan','a722c63db8ec8625af6cf71cb8c2d939','jonatan@telecinco.es',2,'Usera',0,1),('jose','a722c63db8ec8625af6cf71cb8c2d939','jose@masmovil.com',1,'Latina',0,1),('juan','a722c63db8ec8625af6cf71cb8c2d939','yonosenada@gmail.com',2,'El pardo-Fuencarral',0,1),('laura','a722c63db8ec8625af6cf71cb8c2d939','laura@gmail.com',3,'Hortaleza',0,1),('maria','a722c63db8ec8625af6cf71cb8c2d939','maria@gmail.com',3,'Hortaleza',0,1),('nuria','a722c63db8ec8625af6cf71cb8c2d939','nuria@gmail.com',5,'Moncloa',0,1),('oscar','a722c63db8ec8625af6cf71cb8c2d939','oscar@gmail.com',3,'Moratalaz',0,1),('paula','a722c63db8ec8625af6cf71cb8c2d939','paula@gmail.com',2,'Puente de Vallecas',0,1),('paulb','0a73f6f4945f8c3e29324eb0b2c209bb','barzallopa@gmail.com',1,'Tetuan',1,1),('pepe','ee11cbb19052e40b07aac0ca060c23ee','user@gmail.com',1,'Tetuan',0,1),('raul','a722c63db8ec8625af6cf71cb8c2d939','raul@gmail.com',3,'Salamanca',0,1),('sandra','a722c63db8ec8625af6cf71cb8c2d939','sandra@gmail.com',2,'Tetuan',0,1),('sara','a722c63db8ec8625af6cf71cb8c2d939','sarasaritasaramontiel@gmail.com',6,'Tetuan',0,1),('teresa','a722c63db8ec8625af6cf71cb8c2d939','teresa@gmail.com',2,'Usera',0,1),('valentin','a722c63db8ec8625af6cf71cb8c2d939','valentin@gmail.com',4,'Vicalvaro',0,1),('yolanda','a722c63db8ec8625af6cf71cb8c2d939','yolanda@gmail.com',6,'Villa de Vallecas',0,1),('zacarias','a722c63db8ec8625af6cf71cb8c2d939','zacarias@hotmail.com',6,'Villaverde',0,1);
+VALUES ('adrian','a722c63db8ec8625af6cf71cb8c2d939','adrian@gmail.com',2,'Barajas',0,1),
+('alberto','a722c63db8ec8625af6cf71cb8c2d939','alberto@gmail.com',1,'Arganzuela',0,1),
+('almudena','a722c63db8ec8625af6cf71cb8c2d939','almudena@gmail.com',3,'Canillejas',0,1),
+('diana','a722c63db8ec8625af6cf71cb8c2d939','wonderwoman@gmail.com',4,'Carabanchel',0,1),
+('fabio','a722c63db8ec8625af6cf71cb8c2d939','fabio@gmail.com',5,'Centro',0,1),
+('gema','a722c63db8ec8625af6cf71cb8c2d939','gema@gmail.com',6,'Chamartin',0,1),
+('hector','a722c63db8ec8625af6cf71cb8c2d939','troya@gmail.com',1,'Chamberi',0,1),
+('ines','a722c63db8ec8625af6cf71cb8c2d939','ines@gmail.com',2,'Ciudad Lineal',0,1),
+('jacinto','a722c63db8ec8625af6cf71cb8c2d939','benavente@plaza.net',3,'Latina',0,1),
+('jaime','a722c63db8ec8625af6cf71cb8c2d939','jaime@correo.es',3,'Latina',0,1),
+('jessica','a722c63db8ec8625af6cf71cb8c2d939','jessica@choni.es',2,'Usera',0,1),
+('jonatan','a722c63db8ec8625af6cf71cb8c2d939','jonatan@telecinco.es',2,'Usera',0,1),
+('jose','a722c63db8ec8625af6cf71cb8c2d939','jose@masmovil.com',1,'Latina',0,1),
+('juan','a722c63db8ec8625af6cf71cb8c2d939','yonosenada@gmail.com',2,'El pardo-Fuencarral',0,1),
+('laura','a722c63db8ec8625af6cf71cb8c2d939','laura@gmail.com',3,'Hortaleza',0,1),
+('maria','a722c63db8ec8625af6cf71cb8c2d939','maria@gmail.com',3,'Hortaleza',0,1),
+('nuria','a722c63db8ec8625af6cf71cb8c2d939','nuria@gmail.com',5,'Moncloa',0,1),
+('oscar','a722c63db8ec8625af6cf71cb8c2d939','oscar@gmail.com',3,'Moratalaz',0,1),
+('paula','a722c63db8ec8625af6cf71cb8c2d939','paula@gmail.com',2,'Puente de Vallecas',0,1),
+('pepe','ee11cbb19052e40b07aac0ca060c23ee','user@gmail.com',1,'Tetuan',0,1),
+('raul','a722c63db8ec8625af6cf71cb8c2d939','raul@gmail.com',3,'Salamanca',0,1),
+('sandra','a722c63db8ec8625af6cf71cb8c2d939','sandra@gmail.com',2,'Tetuan',0,1),
+('sara','a722c63db8ec8625af6cf71cb8c2d939','sarasaritasaramontiel@gmail.com',6,'Tetuan',0,1),
+('teresa','a722c63db8ec8625af6cf71cb8c2d939','teresa@gmail.com',2,'Usera',0,1),
+('valentin','a722c63db8ec8625af6cf71cb8c2d939','valentin@gmail.com',4,'Vicalvaro',0,1),
+('yolanda','a722c63db8ec8625af6cf71cb8c2d939','yolanda@gmail.com',6,'Villa de Vallecas',0,1),
+('zacarias','a722c63db8ec8625af6cf71cb8c2d939','zacarias@hotmail.com',6,'Villaverde',0,1);
 
 INSERT INTO HobbiesUsuarios
 VALUES
