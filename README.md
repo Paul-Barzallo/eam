@@ -16,33 +16,12 @@ EVENTOS
 ## Instalacion
 
 * clonar el proyecto
-* importar en eclipse como proyecto normal (File > Import... > General > Projects from Folder or Archive)
+* import -> General > Projects from Folder or Archive
+* servers -> Tomcat v9.0 -> Add and Remove
+![Screenshot](documents/tutorial/addServer.png)
 ```
-suele dar error al importar como proyecto git
+puede dar error de 'FileNotFoundException' al principio porque tarda un rato en configurar los archivos
 ```
-
-![Screenshot](documents/tutorial/paso1.png)
-
-* configurar: eam > properties > Project Facets
-	* activar runtimes > Apache Tomcat v9.0
-	* activar Dynamic Web Module
-	* activar JPA
-	* cambiar version de java a 1.8
-	
-![Screenshot](documents/tutorial/paso2.png)
-
-* configurar: eam > properties > JPA:
-	* platform > EclipseLink 2.5.2
-	* Connection > MySQL > Driver
-	* > Name/Type > 5.1
-	* > JAR List > Edit > elegir el driver del proyecto (mysql-connector-java-5.1.47-bin)
-	* Connection > MySQL > Properties > general
-	
-![Screenshot](documents/tutorial/paso3.png)
-
-* eam > JPA Content > persistence.xml > Connection > eclipse connection pool > (la misma configuracion de antes)
-
-![Screenshot](documents/tutorial/paso4.png)
 
 ## Creado con
 
