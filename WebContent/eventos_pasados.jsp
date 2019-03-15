@@ -3,7 +3,8 @@ pageEncoding="UTF-8" %>
 <%@ page import="
 	java.util.List,
 	java.util.LinkedList,
-	java.util.Date,java.text.SimpleDateFormat,
+	java.util.Date,
+	java.text.SimpleDateFormat,
 	java.util.Date,
 	javax.persistence.*,
 	db.DB,
@@ -21,7 +22,7 @@ pageEncoding="UTF-8" %>
 			makeNav(1, type_user);
 			makeFilter();
 			makeClickArticles();
-			setTimeout("hiddenLoad();", 1000)
+			setTimeout("hiddenLoad();", 500)
 		}
 		$(document).ready(make);
 	</script>
