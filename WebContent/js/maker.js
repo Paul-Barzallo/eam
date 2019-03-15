@@ -208,13 +208,3 @@ function makeClickArticles(){
 function clickArticle() {
 	$(location).attr('href',"evento.jsp?id="+$(this).attr("id"));
 }
-
-function makeEventoText(){
-	$(document).ready(function() {
-	    $.ajax({
-	        url: "http://localhost:8080/eamREST/mensaje?id=1"
-	    }).then(function(data) {
-	       $('#main').append(data);
-	    });
-	});
-}

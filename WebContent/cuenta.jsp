@@ -19,7 +19,6 @@ pageEncoding="UTF-8" %>
 	<script type="text/javascript">
 		function make() {
 			makeNav(1, type_user);
-			makeEventoText();
 		}
 		$(document).ready(make);
 	</script>
