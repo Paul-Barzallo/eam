@@ -32,7 +32,7 @@ pageEncoding="UTF-8" %>
 <body>
 	<%@ include file='partes/navbar.html' %>
 	<section class="container mt-n3">
-		<article class="bg-light">
+		<article class="bg-light shadow">
 			<%// Titulo %>
 			<div class="text-center text-uppercase font-weight-bold py-2"><h1><%= e.getTitulo() %></h1></div>
 			<%// Contenido %>

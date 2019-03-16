@@ -198,7 +198,7 @@ function collapseHistorial(){
 }
 
 function makeClickArticles(){
-	var articles = $("article");
+	var articles = $("article").css( 'cursor', 'pointer' );
 	$.each(articles, function (i, value){
 		let article = $(value);
 		article.click(clickArticle);

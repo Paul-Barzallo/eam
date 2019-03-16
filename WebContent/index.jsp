@@ -38,15 +38,19 @@ pageEncoding="UTF-8"%>
 		<article class="container mt-3 mx-0 text-justify d-flex justify-content-center">
 			<div class="col-lg-10 col-12">
 				<p class="mb-2">En esta pagina se publican eventos en diferentes barrios de madrid indicando el tipo de hobbies que están implicado para poder apuntarte a uno de los eventos debes estar registrado y haber iniciado sesión, si no estás registrado a que esperas, ¡unete a nuestra comunidad!</p>
-				<div class="container">
-					<p><b>Si creas una cuenta tendras muchas ventasjas:</b></p>
-					<p> -Te mostraremos eventos segun tus intereses</p>
-					<p> -Podras ver quienes se han apuntado a los eventos</p>
-					<p> -Tendras un registro de los eventos</p>
-					<p> -Puedes comentar los eventos a los que asististe</p>
-				</div>
+				<% if (esAdmin == null) { %>
+					<div class="container">
+						<p><b>Si creas una cuenta tendras muchas ventasjas:</b></p>
+						<p> -Te mostraremos eventos segun tus intereses</p>
+						<p> -Podras ver quienes se han apuntado a los eventos</p>
+						<p> -Tendras un registro de los eventos</p>
+						<p> -Puedes comentar los eventos a los que asististe</p>
+					</div>
+				<% } %>
 			</div>
 		</article>
+		
+		
 	</section>
 	<%@ include file='partes/footer.html' %>
 </body>

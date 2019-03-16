@@ -49,8 +49,6 @@ public class Login extends HttpServlet {
 			
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {
-					System.out.println("cookie name: "+cookie.getName());
-					System.out.println("cookie valor: "+cookie.getValue());
 					if (cookie.getName().equals("user")) {
 						user = cookie.getValue();
 					} else if (cookie.getName().equals("password")) {
@@ -64,7 +62,7 @@ public class Login extends HttpServlet {
 					usuario = null;
 				}
 				if (usuario != null) {
-					if (usuario.getPassword() == password) {
+					if (usuario.getPassword().equals(password)) {
 						sesion.setAttribute("name", user);
 						sesion.setAttribute("esAdmin", usuario.getAdmins().size());
 						Cookie cookie1 = new Cookie("user",user);

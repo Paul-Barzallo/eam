@@ -26,9 +26,6 @@ p {
 .container-load {
 	height: 100vh;
 }
-.img-evento, .hobbies-evento {
-	width:140px;
-}
 .no-rounded {
 	border-radius: 0;
 }
@@ -36,29 +33,5 @@ p {
 	padding-left: 0px;
 	padding-right: 25px;
 }
-@media only screen and (min-width: 768px) {
-	.img-evento, .hobbies-evento{
-		width:160px;
-	}
-}
-@media only screen and (min-width: 992px) {
-	.img-evento, .hobbies-evento {
-		width:200px;
-	}
-}
-@media only screen and (min-width: 1200px) {
-	.img-evento, .hobbies-evento {
-		width:280px;
-	}
-}
-@media only screen and (max-width: 768px) {
-	.info-evento {
-		margin-left: 16px;
-		margin-top: 16px;
-		padding-left: 15px;
-		padding-rigth: 15px;
-	}
-}
-
 
 
