@@ -3,10 +3,13 @@
 Pagina web en la que puedes mirar eventos que se realizarán en tu barrio entre los usuarios de la web
 
 HOME
-![Screenshot](documents/home.png)
+![Screenshot](documents/0.png)
 
 EVENTOS
-![Screenshot](documents/eventos.png)
+![Screenshot](documents/1.png)
+
+EVENTO
+![Screenshot](documents/2.png)
 
 ## Prerrequisitos
 
