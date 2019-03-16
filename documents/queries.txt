@@ -170,6 +170,136 @@ curabitur lectus adipiscing, proin curabitur ut sem nullam. Netus commodo eros, 
 	false,
 	true,
 	'51511038P');
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Baloncesto",
+		"Pasaremos un fin de semana lleno de actividad practicando uno de los deportes mas famosos del mundo. Lorem ipsum dolor sit amet consectetur adipiscing elit molestie mattis, feugiat ad vestibulum auctor sociis blandit erat magna potenti, habitant malesuada morbi gravida platea commodo pellentesque vel. Dapibus accumsan ligula aliquam viverra tellus ac bibendum metus phasellus auctor curabitur, odio vestibulum dignissim placerat lectus fusce arcu donec eget tempor egestas, inceptos taciti venenatis congue malesuada mus hendrerit turpis habitasse duis. Rhoncus mauris convallis ut bibendum hac primis sapien velit euismod quisque pulvinar, varius cursus natoque risus blandit ullamcorper sociis maecenas cras.",
+		'2019-03-24 11:30:00',
+		'Arganzuela',
+		'Paseo de las Delicias, 61, 28045 Madrid',
+		'img/evento6’,
+		2,
+		false,
+		true,
+		'paulb');
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Partido de Fútbol 5x5",
+		"Ven a jugar un 5 contra 5 y demuestra quién manda en la cancha. Lorem ipsum dolor sit amet consectetur adipiscing elit morbi massa porta eleifend iaculis, justo arcu luctus lobortis posuere torquent ridiculus ullamcorper mauris taciti. Scelerisque gravida aenean habitasse cras dictumst bibendum netus, torquent congue odio inceptos quam tempor senectus vivamus, elementum est purus faucibus commodo felis. Hendrerit ultricies turpis per vitae sem eros duis fames pretium habitant, hac dapibus eleifend tempus inceptos lacinia tincidunt class imperdiet proin, maecenas felis fermentum mollis enim lectus purus potenti eu. Non tempus urna erat faucibus pulvinar molestie varius posuere sagittis, habitasse natoque mattis ridiculus congue dictum porttitor fermentum id, lectus aptent curae proin pharetra eleifend mus commodo.",
+		'2019-04-04 17:30:00',
+		'Barajas',
+		'C/ Vía Dublín, 2I, 28042 Madrid',
+		'img/evento7’,
+		2,
+		false,
+		true,
+		'alvaro');
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Ruta de Senderismo",
+		"Coge tracción porque va a ser un día de caminata y campo. Lorem ipsum dolor sit amet consectetur adipiscing elit, platea ligula class fermentum rhoncus hendrerit etiam eget, fusce vestibulum in ornare tempor bibendum. Duis mus felis faucibus nibh hendrerit etiam cras ornare, eleifend vivamus dui cubilia dignissim justo platea, velit lobortis nullam inceptos fringilla sem ante. Rhoncus accumsan ultricies vehicula aliquet ac eros vitae urna, nunc malesuada est et congue id morbi tortor sagittis, cursus suspendisse duis sollicitudin nullam condimentum molestie.",
+		'2019-04-10 12:00:00',
+		'Canillejas',
+		'Calle del Canal del Bósforo, 82',
+		'img/evento8’,
+		2,
+		false,
+		true,
+		'borja');
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Visita al Museo de Ciencias Naturales",
+		"Dinosaurios, planetas y curiosidades...¿Te lo vas a perder?. Lorem ipsum dolor sit amet consectetur adipiscing elit risus habitasse class, magna consequat leo dignissim nostra pellentesque sed eros. Natoque conubia phasellus nascetur suspendisse cubilia mattis, senectus duis parturient nisi blandit varius, porttitor sed id at convallis. Convallis phasellus maecenas donec nisi justo posuere tortor, fermentum cubilia litora nam curae commodo volutpat cras, quisque vel duis sagittis gravida pharetra.",
+		'2019-04-129 10:30:00',
+		'Chamartin',
+		'Calle de José Gutiérrez Abascal, 2, 28006 Madrid',
+		'img/evento9’,
+		2,
+		false,
+		true,
+		‘paulb’);
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Cocina contra el hambre",
+		"Sientete chef y compite por una buena causa. Lorem ipsum dolor sit amet consectetur adipiscing, elit ligula rhoncus volutpat magnis leo porta, non justo porttitor congue at. Nisl pharetra felis accumsan taciti nulla id tempus dis dui, blandit donec per litora mi aptent eget sollicitudin quam, hendrerit odio egestas neque diam libero sociosqu placerat. Vehicula sociosqu eget orci semper parturient lectus fermentum tellus, senectus ut aenean scelerisque leo interdum tristique fusce, eu venenatis gravida curae netus habitasse facilisis. Habitasse facilisi mus rhoncus eget donec himenaeos sagittis lobortis volutpat at morbi cum lectus leo maecenas, integer posuere hac quam eleifend risus justo in porttitor vestibulum inceptos ultrices vitae.",
+		'2019-09-16 01:00:00',
+		'Ciudad Lineal',
+		'Calle Juan Perez Zuñiga, 25, 28027 Madrid',
+		'img/evento10’,
+		2,
+		false,
+		true,
+		‘alvaro’);
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Cine MARVEL",
+		"Tarde de proyecciones de Superhéroes. Eu mi montes erat ullamcorper sapien ornare quam porttitor torquent sem purus cras dapibus tortor, turpis vivamus lacinia neque platea sollicitudin fames conubia netus in vitae cum feugiat. Est rutrum malesuada per diam aliquam molestie nibh conubia mollis phasellus congue, senectus tempus blandit magnis condimentum pharetra pellentesque turpis dapibus. Convallis condimentum imperdiet mollis sociosqu, dui habitant curabitur dictum, primis viverra molestie.",
+		'2019-05-07 18:00:00',
+		'Chamberi',
+		'Calle de Fuencarral, 136, 28001 Madrid',
+		'img/evento11’,
+		2,
+		false,
+		true,
+		‘borja’);
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Taller de Manualidades",
+		"Tarde de proyecciones de Superhéroes. Eu mi montes erat ullamcorper sapien ornare quam porttitor torquent sem purus cras dapibus tortor, turpis vivamus lacinia neque platea sollicitudin fames conubia netus in vitae cum feugiat. Est rutrum malesuada per diam aliquam molestie nibh conubia mollis phasellus congue, senectus tempus blandit magnis condimentum pharetra pellentesque turpis dapibus. Convallis condimentum imperdiet mollis sociosqu, dui habitant curabitur dictum, primis viverra molestie.",
+		'2019-10-10 18:00:00',
+		"Aprende a esculpir tus primeras figuras de barro. ",
+		'Fuencarral - El Pardo',
+		'Calle Musgo, 2, 28023 Madrid',
+		'img/evento12’,
+		2,
+		false,
+		true,
+		‘paulb’);
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Magía con Cartas",
+    	"En este taller aprenderemos como hacer trucos de magía con cartas. La magia es el arte del ilusionismo que consiste en la habilidad de crear trucos que dan la ilusión de manipular objetos, situaciones o personas de forma que la lógica no puede llegar a entender. Los actos de magia son compuestos por trucos de magia, dentro de los más comunes está la magia con las cartas.",
+    	'2019-06-04 19:00:00',
+    	‘Hortaleza’,
+    	‘Avenida del Papa Negro 60, 28043, Madrid’,
+    	'img/evento13’,
+    	 2,
+    	 false,
+    	 true,
+    	 ‘alvaro’);
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Taller de Manualidades",
+		"Aprende a esculpir tus primeras figuras de barro. Lorem ipsum dolor sit amet consectetur adipiscing elit dis mattis duis congue sapien, ridiculus auctor conubia nam etiam venenatis luctus at sem sodales. Sollicitudin dignissim aliquam nostra platea quis consequat mollis habitant, tempor volutpat aptent vulputate gravida molestie fames. Cras tellus fusce metus interdum mollis neque netus suscipit himenaeos blandit quam, nullam per eleifend cursus fames ultricies taciti mauris euismod. Pulvinar dapibus quisque maecenas donec nullam, in a laoreet justo.",
+		'2019-08-07 14:00:00',
+		'Chamberi',
+		'C/ Santa Engracia 23, 28023 Madrid',
+		'img/evento14’,
+		2,
+		false,
+		true,
+		'borja');
+
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Visita al museo del Prado + Concurso QUIZ",
+		"Eu mi montes erat ullamcorper sapien ornare quam porttitor torquent sem purus cras dapibus tortor, turpis vivamus lacinia neque platea sollicitudin fames conubia netus in vitae cum feugiat. Est rutrum malesuada per diam aliquam molestie nibh conubia mollis phasellus congue, senectus tempus blandit magnis condimentum pharetra pellentesque turpis dapibus. Convallis condimentum imperdiet mollis sociosqu, dui habitant curabitur dictum, primis viverra molestie.",
+		'2019-03-22 18:00:00',
+		'Moratalaz',
+		'Calle del Vinateros 104, 28030 Madrid',
+		'img/evento15’,
+		2,
+		false,
+		true,
+		‘paulb’);
 	
 INSERT INTO HobbiesEventos
 VALUES
