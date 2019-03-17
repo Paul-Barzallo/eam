@@ -88,6 +88,14 @@ public class Evento implements Serializable {
 		this.usuarios = new LinkedList<>();
 		this.hobbies = new LinkedList<>();
 	}
+	
+	public void addUsuario(Usuario u) {
+		this.usuarios.add(u);
+	}
+	
+	public void removeUsuario(Usuario u) {
+		this.usuarios.remove(u);
+	}
 
 	public int getIdEvento() {
 		return this.idEvento;

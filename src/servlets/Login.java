@@ -64,7 +64,7 @@ public class Login extends HttpServlet {
 				if (usuario != null) {
 					if (usuario.getPassword().equals(password)) {
 						sesion.setAttribute("name", user);
-						sesion.setAttribute("esAdmin", usuario.getAdmins().size());
+						sesion.setAttribute("esAdmin", usuario.getEsAdmin());
 						Cookie cookie1 = new Cookie("user",user);
 						Cookie cookie2 = new Cookie("password",usuario.getPassword());
 						cookie1.setMaxAge(60*60*24*30); //1 mes

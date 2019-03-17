@@ -1,3 +1,27 @@
+var barrios = [
+	"---Barrio---",
+	"Arganzuela","Barajas",
+	"Canillejas",
+	"Carabanchel",
+	"Centro",
+	"Chamartin",
+	"Chamberi",
+	"Ciudad Lineal",
+	"El pardo-Fuencarral",
+	"Hortaleza",
+	"Latina",
+	"Moncloa",
+	"Moratalaz",
+	"Puente de Vallecas",
+	"Retiro",
+	"Salamanca",
+	"Tetuan",
+	"Usera",
+	"Vicalvaro",
+	"Villa de Vallecas",
+	"Villaverde"
+];
+
 /*
  *Crea el Nav diferenciando los enlaces segun el tipo de usuario
  *	active: indica la posisión del enlace activo,-3 para HOME, -2 para cuenta y -1 para iniciar sesión y cerrar sesión
@@ -9,7 +33,7 @@ function makeNav(active, type_user){
 	var ul1 = $("#nav_ul_enlaces");
 	var ul2 = $("#nav_ul_enlace_log");
 	var enlaces1 = ["proximos_eventos", "eventos_pasados"];
-	var enlaces2 = ["proximos_eventos", "eventos_pasados", "estadisticas"];
+	var enlaces2 = ["proximos_eventos", "eventos_pasados", "crear_evento", "estadisticas"];
 	var enlaces;
 
 	//se carga el boton de cuenta o login y se eligen los enlaces
@@ -69,11 +93,24 @@ function makeBtnAcount(active, icon){
 	return li;
 }
 
-//Rellena un carrousel de imagenes
-//.carousel-indicators debe tener id="carrousel-indicador"
-//.carousel-inner debe tener id="carrousel-imgs"
-// dir_img -> la ruta relativa de la carpeta donde están las imagenes a cargar
-// num_img -> numero de imagenes en la carpeta
+//Crea las partes del login y del signup
+function makeAccess(){
+	var ages = ["---Rango de edad---","< 18","18 - 25","26 - 30","31 - 35","36 - 40", "> 40"];
+	
+	var select_age = $("#age_signup");
+	var select_distric = $("#distric_signup");
+
+	makeSelect(select_age, ages, false);
+	makeSelect(select_distric, barrios, true);
+}
+
+/*
+ * Rellena un carrousel de imagenes
+ *  .carousel-indicators debe tener id="carrousel-indicador"
+ *  .carousel-inner debe tener id="carrousel-imgs"
+ *  dir_img -> la ruta relativa de la carpeta donde están las imagenes a cargar
+ *  num_img -> numero de imagenes en la carpeta
+ */
 function makeCarrousel(dir_img, num_img) {
 	var ul = $('#carrousel-indicador');
 	var div = $('#carrousel-imgs');
@@ -92,39 +129,6 @@ function makeCarrousel(dir_img, num_img) {
 		ul.append(li);
 		div.append(div_img);
 	}
-}
-
-//Crea las partes del login y del signup
-function makeAccess(){
-	var ages = ["---Rango de edad---","< 18","18 - 25","26 - 30","31 - 35","36 - 40", "> 40"];
-	var districs = [
-		"---Barrio---",
-		"Arganzuela","Barajas",
-		"Canillejas",
-		"Carabanchel",
-		"Centro",
-		"Chamartin",
-		"Chamberi",
-		"Ciudad Lineal",
-		"El pardo-Fuencarral",
-		"Hortaleza",
-		"Latina",
-		"Moncloa",
-		"Moratalaz",
-		"Puente de Vallecas",
-		"Retiro",
-		"Salamanca",
-		"Tetuan",
-		"Usera",
-		"Vicalvaro",
-		"Villa de Vallecas",
-		"Villaverde"
-	];
-	var select_age = $("#age_signup");
-	var select_distric = $("#distric_signup");
-
-	makeSelect(select_age, ages, false);
-	makeSelect(select_distric, districs, true);
 }
 
 /*
@@ -197,6 +201,7 @@ function collapseHistorial(){
 		historial.addClass("d-none d-md-block");
 }
 
+// Añade el evento click a los eventos para redireccionar a ese evento
 function makeClickArticles(){
 	var articles = $("article").css( 'cursor', 'pointer' );
 	$.each(articles, function (i, value){
@@ -205,6 +210,20 @@ function makeClickArticles(){
 	});
 }
 
-function clickArticle() {
+// Redirecciona a un evento
+function clickArticle(){
 	$(location).attr('href',"evento.jsp?id="+$(this).attr("id"));
+}
+
+// Añade el popover para ver los asistentes y el evento click para asistir
+function makeEvento(){
+	$("#asistentes").popover({html: true});
+	$("#asistir").click(asistir);
+	var barrio = $("#barrio");
+	makeSelect(barrio, barrios, true);
+}
+
+// redirecciona al servlet que registra a un usuario en un evento
+function asistir(){
+	$(location).attr('href',"register?evento="+$(this).val());
 }

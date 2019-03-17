@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
 								<div class="input-group-prepend">
 									<i class="input-group-text material-icons">person</i>
 								</div>
-								<input class="form-control" type="text" placeholder="Usuario" id="user_login" name="user">
+								<input class="form-control" type="text" placeholder="Usuario" id="user_login" name="user" autofocus>
 							</div>
 							<%// Password %>
 							<div class="input-group mb-3">

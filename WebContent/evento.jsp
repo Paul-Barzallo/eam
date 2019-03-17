@@ -17,7 +17,11 @@ pageEncoding="UTF-8" %>
 	<% SimpleDateFormat sdf1 = new SimpleDateFormat("EEEEEEEEEE dd 'de' MMMMMMMMMM 'del' yyyy");
 	SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
 	String id = request.getParameter("id");
-	Evento e = db.getEM().find(Evento.class, Integer.parseInt(id)); %>
+	Evento e = db.getEM().find(Evento.class, Integer.parseInt(id));
+	String asistentes = "";
+	for (Usuario u: e.getUsuarios()){
+		asistentes += "<p><b>-</b> "+u.getIdUsuario()+"</p>";
+	}%>
 	<script type="text/javascript">
 		function make() {
 			<% if (e.getFecha().compareTo(new Date())>0) { %>
@@ -25,6 +29,7 @@ pageEncoding="UTF-8" %>
 			<% } else { %>
 				makeNav(1, type_user);
 			<% } %>
+			makeEvento();
 		}
 		$(document).ready(make);
 	</script>
@@ -81,14 +86,25 @@ pageEncoding="UTF-8" %>
 					<p><b>Donde: </b><%= e.getBarrio() %></p>
 					<p><b>Direccion: </b><%= e.getDireccion() %></p>
 					<p><b>Creador: </b><%= e.getAdmin().getUsuario().getIdUsuario() %></p>
-					<% if(esAdmin != null && e.getFecha().compareTo(new Date())>0) { %>
-						<button type="button" class="btn btn-primary mt-3">Apuntarse</button>
-						<% if(esAdmin.booleanValue()) { %>
-							<button type="button" class="btn btn-success mt-3">Modificar</button>
-						<% } %>
-					<% } else if (e.getFecha().compareTo(new Date())>0) {%>
-						<p class="text-center text-warning mt-3"><b>Inicia sesión para apuntarte al evento</b></p>
-					<% } %>
+					<p id="asistentes" data-toggle="popover" data-placement="left"  data-trigger="hover" title="Lista de asistentes" data-content="<%= asistentes %>">
+						<b>Asistentes: </b><%= e.getUsuarios().size() %>
+					</p>
+					<%
+					if (e.getFecha().compareTo(new Date())>0) {
+						Usuario u = db.getEM().find(Usuario.class, session.getAttribute("name"));
+						String textBtnAsistir = "";
+						if (!e.getUsuarios().contains(u) || u == null)
+							textBtnAsistir = "Asistir";
+						else
+							textBtnAsistir = "No asistir";%>
+						<button id="asistir" value=<%= e.getIdEvento() %> type="button" class="btn btn-primary mt-3"><%= textBtnAsistir %></button>
+						<%
+						if(esAdmin != null) {
+							if(esAdmin.booleanValue()) { %>
+								<button type="button" class="btn btn-success mt-3">Modificar</button>
+							<% } 
+						} 
+					} %>
 				</div>
 			</div>
 			<%// Descripcion %>

@@ -75,6 +75,10 @@ public class Usuario implements Serializable {
 		this.eventos.add(e);
 	}
 	
+	public void removEvento(Evento e) {
+		this.eventos.remove(e);
+	}
+	
 	public void addHobby(Hobby h) {
 		this.hobbies.add(h);
 	}
@@ -137,6 +141,10 @@ public class Usuario implements Serializable {
 
 	public List<Admin> getAdmins() {
 		return this.admins;
+	}
+	
+	public void setAdmins(List<Admin> admins) {
+		this.admins = admins;
 	}
 
 	public void setAdmin(Admin a) {

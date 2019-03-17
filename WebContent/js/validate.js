@@ -9,12 +9,12 @@ function addValidatesAccess() {
 // valida el registro de usuario antes de hacer submit
 function submitSignup() {
 	count = 0;
-	if (!validarUser()) count+=1;
+	if (!validarEmpty("user_signup", "El usuario no puede estar vacío")) count+=1;
 	if (!validarPasswords()) count+=1;
 	if (!validarEmail()) count+=1;
 	if (!validarEdad()) count+=1;
-	if (!validarBarrio()) count+=1;
-	if (!validarHobbies()) count+=1;
+	if (!validarBarrio("distric_signup")) count+=1;
+	if (!validarHobbies("hobbies_signup")) count+=1;
 	if (count == 0) { 
 		var _hobbies = []
 		var __hobbies = $('input[type=checkbox][name=hobbies_signup]:checked')
@@ -69,10 +69,45 @@ function submitLogin(){
 	});
 }
 
-function validarUser() {
-	var user = $('#user_signup');
+function addValidatesCrearEvento() {
+	$("#btn_submit").click(submitEvento);
+}
+
+function submitEvento() {
+	count = 0;
+	if (!validarFecha("fecha")) count +=1;
+	if (!validarBarrio("barrio")) count+=1;
+	if (!validarHobbies("hobbies")) count+=1;
+	if (!validarEmpty("titulo", "El titulo no puede estar vacío")) count+=1;
+	if (!validarEmpty("direccion", "La direccion no puede estar vacía")) count+=1;
+	if (!validarEmpty("descripcion", "La descripcion no puede estar vacía")) count+=1;
+	if (!validarHobbies("hobbies")) count+=1;
+	if (count == 0) { 
+		$("#btn_submit").attr("type","submit");
+	}
+}
+
+function validarFecha(id){
+	var inputFecha = $("#"+id);
+	inputFecha.parent().next().empty();
+	if (inputFecha.val() == ""){
+		inputFecha.parent().next().append(makeAlert("alert-danger","Debe elegir una fecha", true));
+		return false;
+	}
+	var fecha = new Date($('#'+id).val());
+	var fechaMin = new Date();
+	fechaMin.setDate(fechaMin.getDate() + 1);
+	if (fecha < fechaMin){
+		inputFecha.parent().next().append(makeAlert("alert-danger","La fecha debe ser como minimo dentro de 24h", true));
+		return false;
+	}
+	return true;
+}
+
+function validarEmpty(id, mensaje) {
+	var user = $('#'+id);
 	if (user.val() == ""){
-		user.parent().next().empty().append(makeAlert("alert-danger","El usuario no puede estar vacío", true));
+		user.parent().next().empty().append(makeAlert("alert-danger",mensaje, true));
 		return false;
 	}
 	return true;
@@ -123,27 +158,27 @@ function validarEdad() {
 	}
 	return true;
 }
-function validarBarrio() {
-	var barrio = $("#distric_signup");
+function validarBarrio(id) {
+	var barrio = $("#"+id);
 	barrio.parent().next().empty();
 	if (barrio.val() == "---Barrio---"){
-		barrio.parent().next().append(makeAlert("alert-danger","Este campo es obligatorio", true));
+		barrio.parent().next().append(makeAlert("alert-danger","Debe elegir un barrio", true));
 		return false;
 	}
 	return true;
 }
-function validarHobbies() {
-	var hobbies = $("#hobbies_signup");
+function validarHobbies(id) {
+	var hobbies = $("#"+id);
 	var count = 0;
 	hobbies.parent().next().empty();
 
-	var checks = $('input[name="hobbies_signup"]');
+	var checks = $('input[name='+id+']');
 	$.each(checks, function(i, value) {
 		if ($(value).is(':checked')) count+=1;
 	});
 
 	if (count == 0){
-		hobbies.parent().next().append(makeAlert("alert-danger","Este campo es obligatorio", true));
+		hobbies.parent().next().append(makeAlert("alert-danger","Debe elegir al menos 1 hobby", true));
 		return false;
 	}
 	return true;
