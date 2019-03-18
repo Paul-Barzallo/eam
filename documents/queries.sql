@@ -355,6 +355,30 @@ VALUES ("Visita al museo del Prado + Concurso QUIZ",
 		false,
 		true,
 		'51511038P');
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Tarde TERRORIFICA",
+		"Ven a disfrutar de una tarde de miedo y vive una experiencia terrorificamente inolvidable. Lorem ipsum dolor sit amet consectetur adipiscing, elit ligula rhoncus volutpat magnis leo porta, non justo porttitor congue at. Nisl pharetra felis accumsan taciti nulla id tempus dis dui, blandit donec per litora mi aptent eget sollicitudin quam, hendrerit odio egestas neque diam libero sociosqu placerat. Vehicula sociosqu eget orci semper parturient lectus fermentum tellus, senectus ut aenean scelerisque leo interdum tristique fusce, eu venenatis gravida curae netus habitasse facilisis. Habitasse facilisi mus rhoncus eget donec himenaeos sagittis lobortis volutpat at morbi cum lectus leo maecenas, integer posuere hac quam eleifend risus justo in porttitor vestibulum inceptos ultrices vitae.",
+		'2019-05-24 18:00:00',
+		'Vicalvaro',
+		'Av. de la Gran Vía del Este, 1, 28032 Madrid',
+		'img/evento16',
+		3,
+		false,
+		true,
+		'11111111X');
+
+INSERT INTO Eventos (titulo, descripcion, fecha, barrio, direccion, ruta_img, num_img, cancelado, aprobado, id_creador)
+VALUES ("Pasados por Agua",
+		"Excursion a Valencia, donde disfrutaremos de un fin de se demana de sol y agua y nos iniciaremos en el mundo de la fotografía submarina. Lorem ipsum dolor sit amet consectetur adipiscing elit dis mattis duis congue sapien, ridiculus auctor conubia nam etiam venenatis luctus at sem sodales. Sollicitudin dignissim aliquam nostra platea quis consequat mollis habitant, tempor volutpat aptent vulputate gravida molestie fames. Cras tellus fusce metus interdum mollis neque netus suscipit himenaeos blandit quam, nullam per eleifend cursus fames ultricies taciti mauris euismod. Pulvinar dapibus quisque maecenas donec nullam, in a laoreet justo.",
+		'2019-06-07 14:00:00',
+		'Villaverde',
+		'C/ Santa Engracia 23, 28023 Madrid',
+		'img/evento14',
+		2,
+		false,
+		true,
+		'22222222Y');
 	
 INSERT INTO HobbiesEventos
 VALUES
