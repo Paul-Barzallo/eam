@@ -4,9 +4,9 @@
 	<div class="row m-0 w-100 mt-n4">
 		<%// filtros %>
 		<%@ include file='filter.jsp' %>
-		<%// sección con los eventos %>
+		<%// secciÃ³n con los eventos %>
 		<section id="eventos" class="container col-xl-10 col-md-9 col-12 px-3 pr-4 mt-2"> 
-			<div class="row">
+
 			<% SimpleDateFormat sdf = new SimpleDateFormat("dd 'de' MMMMMMMMMM 'del' yyyy 'a las' HH:mm");
 			
 			int count;
@@ -37,6 +37,14 @@
 				
 			} else {
 				eventos = query2.getResultList();
+			}
+			if (eventos.size() == 0) {
+				%>
+				<div class="text-center mt-5">
+					<h2>No hay resultados &#x2639;&#xFE0F;</h2>
+				<%
+			} else {
+				%><div class="row"><%
 			}
 
 			for (Evento e : eventos) { %>

@@ -96,6 +96,10 @@ public class Evento implements Serializable {
 	public void removeUsuario(Usuario u) {
 		this.usuarios.remove(u);
 	}
+	
+	public void addHobbie(Hobby h) {
+		this.hobbies.add(h);
+	}
 
 	public int getIdEvento() {
 		return this.idEvento;
