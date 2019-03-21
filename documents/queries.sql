@@ -76,7 +76,9 @@ VALUES
 	('cartas'),
 	('museos'),
 	('gastronomia'),
-	('manualidades');
+	('manualidades'),
+	('buceo'),
+	('terror');
 	
 INSERT INTO Usuarios
 VALUES
@@ -409,7 +411,9 @@ VALUES
 	(13, 6),
 	(14, 9),
 	(15, 7),
-	(15, 9);
+	(15, 9),
+	(16, 11),
+	(17, 10);
 	
 INSERT INTO Inscritos
 VALUES 
