@@ -76,9 +76,10 @@ function makeBtnLogin(active, icon) {
 //Crea el boton de cuenta
 function makeBtnAcount(active, icon){
 	var li = $('<li class="nav-item dropdown">');
-	var a = $('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Cuenta</a>');
+	var a = $('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">');
+	a.load("nameUser");
 	var div = $('<div class="dropdown-menu dropdown-menu-right">');
-	var a_conf = $('<a class="dropdown-item">Configurar</a>');
+	var a_conf = $('<a class="dropdown-item">Cuenta</a>');
 	var a_logout = $('<a class="dropdown-item">Cerrar sesión</a>');
 	var i_logout = $('<i class="material-icons align-middle pb-2">');
 	i_logout.text(icon);
